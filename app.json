@@ -3,7 +3,7 @@
     "name": "b-mufar",
     "slug": "b-mufar",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.lambdadelta.bmufar"
     },
     "web": {
       "favicon": "./assets/favicon.png"
