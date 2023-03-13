@@ -1,5 +1,8 @@
 node_modules/
 .expo/
+.target/
+.vscode/
+android/
 dist/
 npm-debug.*
 *.jks
