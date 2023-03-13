@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "b-mufar",
-    "slug": "b-mufar",
+    "name": "B-Mufar",
+    "slug": "B-Mufar",
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
@@ -11,21 +11,31 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "sdkVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.lambdadelta.bmufar"
+      "package": "com.lambdadelta.bmufar",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7b2b02f1-a42a-47b6-9ae4-1966ba850c83"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/7b2b02f1-a42a-47b6-9ae4-1966ba850c83"
     }
   }
 }
