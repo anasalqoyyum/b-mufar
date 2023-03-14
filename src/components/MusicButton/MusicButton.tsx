@@ -1,20 +1,28 @@
 import { Audio } from 'expo-av'
-import { Button, Image } from 'native-base'
+import { Box, Button, Image } from 'native-base'
 import { styled } from 'nativewind'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { setMusicStatus } from '../../store/slice'
 
 const TButton = styled(Button)
+const TBox = styled(Box)
+
 const mainTrack = require('../../../assets/audio/mainBG.mp3')
 
 const musicOn = require('../../../assets/icon/music-on.png')
 const musicOff = require('../../../assets/icon/music-off.png')
 
 export const MusicButton = () => {
-  const [status, setStatus] = useState(false)
+  const dispatch = useAppDispatch()
+  const status = useAppSelector(state => state.reducer.musicStatus)
   const sound = useRef(new Audio.Sound())
 
   useEffect(() => {
     LoadAudio()
+    return () => {
+      UnloadAudio()
+    }
   }, [])
 
   const PlayAudio = async () => {
@@ -22,7 +30,7 @@ export const MusicButton = () => {
       const result = await sound.current.getStatusAsync()
       if (result.isLoaded) {
         if (result.isPlaying === false) {
-          setStatus(true)
+          dispatch(setMusicStatus('playing'))
           sound.current.playAsync()
         }
       }
@@ -36,7 +44,7 @@ export const MusicButton = () => {
       const result = await sound.current.getStatusAsync()
       if (result.isLoaded) {
         if (result.isPlaying === true) {
-          setStatus(false)
+          dispatch(setMusicStatus('paused'))
           sound.current.pauseAsync()
         }
       }
@@ -51,32 +59,36 @@ export const MusicButton = () => {
       try {
         const result = await sound.current.loadAsync(mainTrack, { isLooping: true, volume: 0.3 }, true)
         if (result.isLoaded === false) {
-          setStatus(false)
+          dispatch(setMusicStatus('idle'))
           console.log('Error in Loading Audio')
         } else {
-          setStatus(true)
           PlayAudio()
         }
       } catch (error) {
         console.error(error)
-        setStatus(false)
+        dispatch(setMusicStatus('idle'))
       }
     } else {
-      setStatus(false)
+      dispatch(setMusicStatus('idle'))
     }
   }
 
-  const renderImage = () => {
-    return <Image key={status.toString()} size={'12'} source={status ? musicOn : musicOff} alt="music" />
+  const UnloadAudio = async () => {
+    dispatch(setMusicStatus('idle'))
+    await sound.current.unloadAsync()
   }
 
-  return status ? (
-    <TButton size={'12'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={PauseAudio}>
-      {renderImage()}
-    </TButton>
-  ) : (
-    <TButton size={'12'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={PlayAudio}>
-      {renderImage()}
-    </TButton>
+  return (
+    <TBox className="absolute bottom-4 right-8">
+      {status === 'idle' || status === 'playing' ? (
+        <TButton size={'12'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={PauseAudio}>
+          <Image key={status} size={'12'} source={musicOn} alt="music" />
+        </TButton>
+      ) : (
+        <TButton size={'12'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={PlayAudio}>
+          <Image key={status} size={'12'} source={musicOff} alt="music" />
+        </TButton>
+      )}
+    </TBox>
   )
 }

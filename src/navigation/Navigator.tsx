@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { MainScreen } from '../screens/MainScreen'
 import { HelpScreen } from '../screens/HelpScreen'
 import { StatusBar } from 'react-native'
+import { MusicButton } from '../components/MusicButton/MusicButton'
 
 export type RootStackParamList = {
   Main: undefined
@@ -19,6 +20,7 @@ export const Navigator = () => {
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Help" component={HelpScreen} />
       </Stack.Navigator>
+      <MusicButton />
       <StatusBar hidden />
     </NavigationContainer>
   )
