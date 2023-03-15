@@ -42,11 +42,7 @@ export const MainScreen = ({ navigation }: Props) => {
             </TButton>
           </TBox>
           <TBox>
-            <TButton
-              size={'20'}
-              className="active:translate-y-1 active:opacity-90"
-              bgColor={'none'}
-              onPress={() => navigation.navigate('StudyCardScreen', { materialTheme: 'profesi' })}>
+            <TButton size={'20'} className="opacity-25 active:translate-y-1" bgColor={'none'}>
               <TImage size={'20'} source={playBtn} alt="play" />
             </TButton>
           </TBox>

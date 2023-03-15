@@ -41,10 +41,12 @@ export const MaterialSelectScreen = (props: Props) => {
 
   return (
     <PageWrapper image={bgMain}>
-      <TBox className="h-full w-full items-center justify-center pt-12">
+      <TBox className="h-full w-full items-center justify-center">
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.navigate('StudyMenu')} />
-        <TImage className="absolute bottom-36 scale-[.15]" source={title} alt="home" />
+        <TBox>
+          <TImage size={'sm'} source={title} width={200} height={50} alt="home" />
+        </TBox>
         <TBox className="scale-[.9]">
           <Flex width={'4/5'} flexDirection={'row'} flexWrap={'wrap'}>
             {Object.entries(material).map(([key, val]) => {

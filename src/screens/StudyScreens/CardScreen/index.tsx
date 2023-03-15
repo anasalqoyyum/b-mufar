@@ -25,7 +25,7 @@ const nextBtn = require('../../../../assets/icon/arrow-right.png')
 
 export const StudyCardScreen = (props: Props) => {
   const [currentCard, setCurrentCard] = useState(0)
-  const [playing, setPlaying] = useState(false)
+  const [_playing, setPlaying] = useState(false)
 
   const getCurrentLesson = () => {
     const { materialTheme } = props.route.params
@@ -94,7 +94,7 @@ export const StudyCardScreen = (props: Props) => {
         </Box>
         <SoundButton source={lesson[currentCard].sound} setStatus={setPlaying} />
         {currentCard !== maxCardLength && (
-          <TBox className="absolute right-40 top-36 z-10">
+          <TBox className="absolute right-44 top-36 z-10">
             <TButton size={'16'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={nextCard}>
               <TImage size={'16'} className="absolute" source={nextBtn} alt="next" />
             </TButton>
