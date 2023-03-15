@@ -15,7 +15,10 @@ import { PerangkatKelas } from '../../../constants/lessons/3-PeralatanSekolah/Pe
 import { Warna } from '../../../constants/lessons/3-PeralatanSekolah/Warna'
 import { Alamat } from '../../../constants/lessons/4-Alamat/Alamat'
 import { Angka } from '../../../constants/lessons/4-Alamat/Angka'
+import { IsiRuangan } from '../../../constants/lessons/5-Rumah/IsiRuangan'
 import { RuanganRumah } from '../../../constants/lessons/5-Rumah/RuanganRumah'
+import { AnggotaKeluarga } from '../../../constants/lessons/6-Keluarga/Anggota'
+import { KegiatanHarian } from '../../../constants/lessons/6-Keluarga/KegiatanHarian'
 import { RootStackParamList } from '../../../navigation/Navigator'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'StudyCardScreen'>
@@ -57,8 +60,12 @@ export const StudyCardScreen = (props: Props) => {
         return Angka
       case 'ruangRumah':
         return RuanganRumah
-      default:
-        return Profesi
+      case 'isiRuang':
+        return IsiRuangan
+      case 'kegiatanHarian':
+        return KegiatanHarian
+      case 'anggotaKeluarga':
+        return AnggotaKeluarga
     }
   }
 
