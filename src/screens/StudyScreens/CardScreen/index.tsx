@@ -6,7 +6,7 @@ import { BackButton } from '../../../components/HomeButton/BackButton'
 import { HomeButton } from '../../../components/HomeButton/HomeButton'
 import { PageWrapper } from '../../../components/PageWrapper/PageWrapper'
 import { SoundButton } from '../../../components/SoundButton/SoundButton'
-import { Profesi } from '../../../constants/lessons/Perkenalan/Profesi'
+import { Profesi } from '../../../constants/lessons/1-Perkenalan/Profesi'
 import { RootStackParamList } from '../../../navigation/Navigator'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'StudyCardScreen'>
@@ -22,10 +22,11 @@ const nextBtn = require('../../../../assets/icon/arrow-right.png')
 
 export const StudyCardScreen = (props: Props) => {
   const [currentCard, setCurrentCard] = useState(0)
+  const [playing, setPlaying] = useState(false)
   const maxCardLength = Profesi.length - 1
 
   const nextCard = () => {
-    if (currentCard !== maxCardLength) {
+    if (currentCard !== maxCardLength && !playing) {
       setCurrentCard(currentCard + 1)
     } else {
       return null
@@ -33,7 +34,7 @@ export const StudyCardScreen = (props: Props) => {
   }
 
   const prevCard = () => {
-    if (currentCard !== 0) {
+    if (currentCard !== 0 && !playing) {
       setCurrentCard(currentCard - 1)
     } else {
       return null
@@ -67,7 +68,7 @@ export const StudyCardScreen = (props: Props) => {
             </Stack>
           </Box>
         </Box>
-        <SoundButton source={Profesi[currentCard].sound} />
+        <SoundButton source={Profesi[currentCard].sound} setStatus={setPlaying} />
         {currentCard !== maxCardLength && (
           <TBox className="absolute right-[250px] top-36 z-10">
             <TButton size={'16'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={nextCard}>

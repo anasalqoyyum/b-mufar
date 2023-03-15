@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 type Props = {
   source: any
+  setStatus: (val: boolean) => void
 }
 
 const TButton = styled(Button)
@@ -17,6 +18,7 @@ export const SoundButton = (props: Props) => {
 
   async function playSound() {
     const { sound } = await Audio.Sound.createAsync(props.source)
+    props.setStatus(true)
     setSound(sound)
 
     await sound.playAsync()
@@ -25,6 +27,7 @@ export const SoundButton = (props: Props) => {
   useEffect(() => {
     return sound
       ? () => {
+          props.setStatus(false)
           sound.unloadAsync()
         }
       : undefined
