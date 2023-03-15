@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { Box, Button, Flex, Image } from 'native-base'
+import { AspectRatio, Box, Button, Flex, Image } from 'native-base'
 import { styled } from 'nativewind'
 import React from 'react'
 import { BackButton } from '../../../components/HomeButton/BackButton'
@@ -28,12 +28,14 @@ const buttonMap = {
 export const StudyMenuScreen = (props: Props) => {
   return (
     <PageWrapper image={bgMain}>
-      <TBox className="h-full w-full items-center justify-center pt-12">
+      <TBox className="h-full w-full items-center justify-center pt-4">
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.navigate('Main')} />
-        <TImage className="absolute bottom-36 scale-[.15]" source={title} alt="home" />
+        <TBox>
+          <TImage size={'sm'} source={title} width={200} height={50} alt="home" />
+        </TBox>
         <TBox className="scale-[.9]">
-          <Flex width={'3/5'} flexDirection={'row'} flexWrap={'wrap'}>
+          <Flex flexDirection={'row'}>
             <TButton
               size={'40'}
               className="active:translate-y-1 active:opacity-90"
@@ -55,6 +57,8 @@ export const StudyMenuScreen = (props: Props) => {
               onPress={() => props.navigation.navigate('MaterialSelect', { materialId: 3 })}>
               <Image size={'40'} source={buttonMap['3Main']} alt="image" />
             </TButton>
+          </Flex>
+          <Flex flexDirection={'row'}>
             <TButton
               size={'40'}
               className="active:translate-y-1 active:opacity-90"

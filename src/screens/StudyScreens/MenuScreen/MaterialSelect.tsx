@@ -6,7 +6,7 @@ import { BackButton } from '../../../components/HomeButton/BackButton'
 import { HomeButton } from '../../../components/HomeButton/HomeButton'
 import { PageWrapper } from '../../../components/PageWrapper/PageWrapper'
 import { RootStackParamList } from '../../../navigation/Navigator'
-import { Material1, Material2, Material3, Material4, Material5, Material6 } from './MaterialConstant'
+import { Material1, Material2, Material3, Material4, Material5, Material6, MaterialType } from './MaterialConstant'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MaterialSelect'>
 
@@ -49,7 +49,12 @@ export const MaterialSelectScreen = (props: Props) => {
           <Flex width={'4/5'} flexDirection={'row'} flexWrap={'wrap'}>
             {Object.entries(material).map(([key, val]) => {
               return (
-                <TButton key={key} size={'56'} className="active:translate-y-1 active:opacity-90" bgColor={'none'}>
+                <TButton
+                  key={key}
+                  size={'56'}
+                  className="active:translate-y-1 active:opacity-90"
+                  bgColor={'none'}
+                  onPress={() => props.navigation.navigate('StudyCardScreen', { materialTheme: key as MaterialType })}>
                   <Image size={'56'} source={val} alt="home" />
                 </TButton>
               )

@@ -29,11 +29,13 @@ export const HelpScreen = (props: Props) => {
       <TBox className="h-full w-full items-center pt-5">
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.navigate('Main')} />
-        <TImage className="absolute bottom-36 scale-[.2]" source={title} alt="home" />
+        <TBox>
+          <TImage size={'sm'} source={title} width={250} height={60} alt="home" />
+        </TBox>
         <TBox className="absolute">
           <TImage className="scale-[.80]" source={scrollHelp} alt="scroll" />
         </TBox>
-        <TText className="mt-28 h-16" bold size={'md'}>
+        <TText className="mt-14 h-16" bold size={'md'}>
           Media pembelajaran ini materi kosakata bahasa Arab beserta game terkait materi. Pengguna dapat meng-klik tombol atau gambar yang
           tersedia di halaman aplikasi. Perhatikan fungsi tombol berikut:
         </TText>

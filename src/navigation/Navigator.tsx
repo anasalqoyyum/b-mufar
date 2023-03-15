@@ -15,7 +15,7 @@ export type RootStackParamList = {
   Help: undefined
   StudyMenu: undefined
   MaterialSelect: { materialId: 1 | 2 | 3 | 4 | 5 | 6 }
-  StudyCardScreen: { materialTheme?: MaterialType }
+  StudyCardScreen: { materialTheme: MaterialType }
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
