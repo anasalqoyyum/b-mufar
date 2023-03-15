@@ -27,7 +27,7 @@ export const MainScreen = ({ navigation }: Props) => {
     <PageWrapper image={bgMain}>
       <TBox className="h-3/4 w-full items-center pt-20">
         <TBox className="mb-8 items-center justify-center">
-          <TImage className="absolute top-36 right-72" size={'40'} source={peopleMain} alt="people" />
+          <TImage className="absolute top-36 right-72 animate-bounce" size={'40'} source={peopleMain} alt="people" />
           <TImage className="mb-4 h-auto w-80 -rotate-6" source={textLogo} alt="logo" />
           <TText className="text-base font-semibold text-yellow-600">Belajar Mufradat Bahasa Arab</TText>
         </TBox>
@@ -37,7 +37,7 @@ export const MainScreen = ({ navigation }: Props) => {
               size={'20'}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
-              onPress={() => navigation.navigate('Help')}>
+              onPress={() => navigation.navigate('StudyMenu')}>
               <TImage className="active:bg-black active:bg-opacity-50" size={'20'} source={bookBtn} alt="learn" />
             </TButton>
           </TBox>
@@ -46,7 +46,7 @@ export const MainScreen = ({ navigation }: Props) => {
               size={'20'}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
-              onPress={() => navigation.navigate('Help')}>
+              onPress={() => navigation.navigate('StudyCardScreen', {})}>
               <TImage size={'20'} source={playBtn} alt="play" />
             </TButton>
           </TBox>

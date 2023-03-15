@@ -57,7 +57,7 @@ export const MusicButton = () => {
     const checkLoading = await sound.current.getStatusAsync()
     if (checkLoading.isLoaded === false) {
       try {
-        const result = await sound.current.loadAsync(mainTrack, { isLooping: true, volume: 0.3 }, true)
+        const result = await sound.current.loadAsync(mainTrack, { isLooping: true, volume: 0.15 }, true)
         if (result.isLoaded === false) {
           dispatch(setMusicStatus('idle'))
           console.log('Error in Loading Audio')

@@ -1,5 +1,4 @@
-import { Box } from 'native-base'
-import { styled } from 'nativewind'
+import { View } from 'native-base'
 import React, { ReactNode } from 'react'
 import { ImageBackground, ImageSourcePropType } from 'react-native'
 
@@ -8,12 +7,10 @@ type Props = {
   image: ImageSourcePropType
 }
 
-const TBox = styled(Box)
-
 export const PageWrapper = (props: Props) => {
   return (
-    <TBox>
+    <View>
       <ImageBackground source={props.image}>{props.children}</ImageBackground>
-    </TBox>
+    </View>
   )
 }
