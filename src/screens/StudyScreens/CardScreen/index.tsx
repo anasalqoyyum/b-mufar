@@ -10,6 +10,12 @@ import { Arah } from '../../../constants/lessons/1-Perkenalan/Arah'
 import { Profesi } from '../../../constants/lessons/1-Perkenalan/Profesi'
 import { FasilitasSekolah } from '../../../constants/lessons/2-Fasilitas/FasilitasSekolah'
 import { RuangSekolah } from '../../../constants/lessons/2-Fasilitas/RuangSekolah'
+import { PeralatanSekolah } from '../../../constants/lessons/3-PeralatanSekolah/PeralatanSekolah'
+import { PerangkatKelas } from '../../../constants/lessons/3-PeralatanSekolah/PerangkatKelas'
+import { Warna } from '../../../constants/lessons/3-PeralatanSekolah/Warna'
+import { Alamat } from '../../../constants/lessons/4-Alamat/Alamat'
+import { Angka } from '../../../constants/lessons/4-Alamat/Angka'
+import { RuanganRumah } from '../../../constants/lessons/5-Rumah/RuanganRumah'
 import { RootStackParamList } from '../../../navigation/Navigator'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'StudyCardScreen'>
@@ -39,6 +45,18 @@ export const StudyCardScreen = (props: Props) => {
         return FasilitasSekolah
       case 'ruangSekolah':
         return RuangSekolah
+      case 'peralatanSekolah':
+        return PeralatanSekolah
+      case 'perangkatKelas':
+        return PerangkatKelas
+      case 'warna':
+        return Warna
+      case 'kosakataAlamat':
+        return Alamat
+      case 'angka':
+        return Angka
+      case 'ruangRumah':
+        return RuanganRumah
       default:
         return Profesi
     }
