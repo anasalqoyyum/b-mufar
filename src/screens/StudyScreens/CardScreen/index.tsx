@@ -32,7 +32,20 @@ const bgRumah = require('../../../../assets/background/bg-rumah.png')
 const bgProfesi = require('../../../../assets/background/bg-profesi.png')
 const bgJalan = require('../../../../assets/background/bg-jalan.png')
 
-const title = require('../../../../assets/title/temabelajar-title.png')
+const title11 = require('../../../../assets/title/1-1.png')
+const title12 = require('../../../../assets/title/1-2.png')
+const title21 = require('../../../../assets/title/2-1.png')
+const title22 = require('../../../../assets/title/2-2.png')
+const title31 = require('../../../../assets/title/3-1.png')
+const title32 = require('../../../../assets/title/3-2.png')
+const title33 = require('../../../../assets/title/3-3.png')
+const title41 = require('../../../../assets/title/4-1.png')
+const title42 = require('../../../../assets/title/4-2.png')
+const title51 = require('../../../../assets/title/5-1.png')
+const title52 = require('../../../../assets/title/5-2.png')
+const title61 = require('../../../../assets/title/6-1.png')
+const title62 = require('../../../../assets/title/6-2.png')
+
 const prevBtn = require('../../../../assets/icon/arrow-left.png')
 const nextBtn = require('../../../../assets/icon/arrow-right.png')
 
@@ -100,6 +113,39 @@ export const StudyCardScreen = (props: Props) => {
     }
   }
 
+  const getCurrentTitle = () => {
+    const { materialTheme } = props.route.params
+
+    switch (materialTheme) {
+      case 'profesi':
+        return title11
+      case 'arah':
+        return title12
+      case 'fasilitasSekolah':
+        return title22
+      case 'ruangSekolah':
+        return title21
+      case 'peralatanSekolah':
+        return title31
+      case 'perangkatKelas':
+        return title32
+      case 'warna':
+        return title33
+      case 'kosakataAlamat':
+        return title41
+      case 'angka':
+        return title42
+      case 'ruangRumah':
+        return title51
+      case 'isiRuang':
+        return title52
+      case 'kegiatanHarian':
+        return title61
+      case 'anggotaKeluarga':
+        return title62
+    }
+  }
+
   const nextCard = () => {
     if (currentCard !== maxCardLength) {
       setCurrentCard(currentCard + 1)
@@ -122,7 +168,7 @@ export const StudyCardScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />
         <TBox className="absolute right-8 top-4">
-          <TImage size={'sm'} source={title} width={200} height={50} alt="home" />
+          <TImage size={'sm'} source={getCurrentTitle()} width={200} height={50} alt="home" />
         </TBox>
         {currentCard !== 0 && (
           <TBox className="absolute left-28 top-36 z-10">
