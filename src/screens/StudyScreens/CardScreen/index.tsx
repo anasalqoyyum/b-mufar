@@ -27,7 +27,11 @@ const TBox = styled(Box)
 const TButton = styled(Button)
 const TImage = styled(Image)
 
-const bgMain = require('../../../../assets/background/bg-main.png')
+const bgSekolah = require('../../../../assets/background/bg-sekolah.png')
+const bgRumah = require('../../../../assets/background/bg-rumah.png')
+const bgProfesi = require('../../../../assets/background/bg-profesi.png')
+const bgJalan = require('../../../../assets/background/bg-jalan.png')
+
 const title = require('../../../../assets/title/temabelajar-title.png')
 const prevBtn = require('../../../../assets/icon/arrow-left.png')
 const nextBtn = require('../../../../assets/icon/arrow-right.png')
@@ -72,6 +76,30 @@ export const StudyCardScreen = (props: Props) => {
   const lesson = getCurrentLesson()
   const maxCardLength = lesson.length - 1
 
+  const getCurrentBackground = () => {
+    const { materialTheme } = props.route.params
+
+    switch (materialTheme) {
+      case 'profesi':
+      case 'arah':
+        return bgProfesi
+      case 'fasilitasSekolah':
+      case 'ruangSekolah':
+      case 'peralatanSekolah':
+      case 'perangkatKelas':
+      case 'warna':
+        return bgSekolah
+      case 'kosakataAlamat':
+      case 'angka':
+        return bgJalan
+      case 'ruangRumah':
+      case 'isiRuang':
+      case 'kegiatanHarian':
+      case 'anggotaKeluarga':
+        return bgRumah
+    }
+  }
+
   const nextCard = () => {
     if (currentCard !== maxCardLength) {
       setCurrentCard(currentCard + 1)
@@ -89,7 +117,7 @@ export const StudyCardScreen = (props: Props) => {
   }
 
   return (
-    <PageWrapper image={bgMain}>
+    <PageWrapper image={getCurrentBackground()}>
       <TBox className="h-full w-full items-center pt-12">
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />
