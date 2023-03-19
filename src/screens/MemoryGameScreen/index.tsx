@@ -23,7 +23,7 @@ const nextBtn = require('../../../assets/icon/arrow-right.png')
 const menang = require('../../../assets/icon/menang.png')
 const homeBtn = require('../../../assets/icon/home-btn.png')
 const backBtn = require('../../../assets/icon/arrow-left.png')
-const GAME_SIZE = 2
+const GAME_SIZE = 10
 
 export const MemoryGameScreen = (props: Props) => {
   const { materialId } = props.route.params
