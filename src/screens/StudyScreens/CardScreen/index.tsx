@@ -51,7 +51,7 @@ const nextBtn = require('../../../../assets/icon/arrow-right.png')
 
 export const StudyCardScreen = (props: Props) => {
   const [currentCard, setCurrentCard] = useState(0)
-  const [_playing, setPlaying] = useState(false)
+  const [_, setPlaying] = useState(false)
 
   const getCurrentLesson = () => {
     const { materialTheme } = props.route.params

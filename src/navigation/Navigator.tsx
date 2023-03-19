@@ -9,6 +9,8 @@ import { StudyMenuScreen } from '../screens/StudyScreens/MenuScreen'
 import { MaterialSelectScreen } from '../screens/StudyScreens/MenuScreen/MaterialSelect'
 import { MaterialType } from '../screens/StudyScreens/MenuScreen/MaterialConstant'
 import { StudyCardScreen } from '../screens/StudyScreens/CardScreen'
+import { MemoryGameScreen } from '../screens/MemoryGameScreen'
+import { GameSelectScreen } from '../screens/GameSelectScreen'
 
 export type RootStackParamList = {
   Main: undefined
@@ -16,6 +18,8 @@ export type RootStackParamList = {
   StudyMenu: undefined
   MaterialSelect: { materialId: 1 | 2 | 3 | 4 | 5 | 6 }
   StudyCardScreen: { materialTheme: MaterialType }
+  MemoryGame: { materialTheme: MaterialType }
+  GameSelect: { materialId: 1 | 2 | 3 | 4 | 5 | 6 }
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
@@ -28,7 +32,9 @@ export const Navigator = () => {
         <Stack.Screen name="Help" component={HelpScreen} />
         <Stack.Screen name="StudyMenu" component={StudyMenuScreen} />
         <Stack.Screen name="MaterialSelect" component={MaterialSelectScreen} />
+        <Stack.Screen name="GameSelect" component={GameSelectScreen} />
         <Stack.Screen name="StudyCardScreen" component={StudyCardScreen} />
+        <Stack.Screen name="MemoryGame" component={MemoryGameScreen} />
       </Stack.Navigator>
       <MusicButton />
       <StatusBar hidden />
