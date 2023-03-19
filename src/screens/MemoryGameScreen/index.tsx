@@ -126,7 +126,7 @@ export const MemoryGameScreen = (props: Props) => {
   const checkSectionDone = gameState.point !== 0 && gameState.point % 5 === 0 && gameState.point <= GAME_SIZE
 
   const goNextSection = () => {
-    if (checkSectionDone && section !== GAME_SIZE / 2) {
+    if (checkSectionDone && section !== GAME_SIZE / 5) {
       setSection(section + 1)
     }
   }
