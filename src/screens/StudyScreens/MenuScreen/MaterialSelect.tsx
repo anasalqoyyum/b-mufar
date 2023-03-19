@@ -6,7 +6,8 @@ import { BackButton } from '../../../components/HomeButton/BackButton'
 import { HomeButton } from '../../../components/HomeButton/HomeButton'
 import { PageWrapper } from '../../../components/PageWrapper/PageWrapper'
 import { RootStackParamList } from '../../../navigation/Navigator'
-import { Material1, Material2, Material3, Material4, Material5, Material6, MaterialType } from './MaterialConstant'
+import { getCurrentMaterial } from '../../../utils/Commons'
+import { MaterialType } from './MaterialConstant'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MaterialSelect'>
 
@@ -14,30 +15,13 @@ const TBox = styled(Box)
 const TButton = styled(Button)
 const TImage = styled(Image)
 
-const bgMain = require('../../../../assets/background/bg-main.png')
+const bgMain = require('../../../../assets/background/bg-materi.png')
 const title = require('../../../../assets/title/materi-title.png')
 
 export const MaterialSelectScreen = (props: Props) => {
   const { materialId } = props.route.params
 
-  const getCurrentMaterial = () => {
-    switch (materialId) {
-      case 1:
-        return Material1
-      case 2:
-        return Material2
-      case 3:
-        return Material3
-      case 4:
-        return Material4
-      case 5:
-        return Material5
-      case 6:
-        return Material6
-    }
-  }
-
-  const material = getCurrentMaterial()
+  const material = getCurrentMaterial(materialId)
 
   return (
     <PageWrapper image={bgMain}>

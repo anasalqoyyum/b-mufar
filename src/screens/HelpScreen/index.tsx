@@ -13,7 +13,7 @@ const TText = styled(Text)
 const TImage = styled(Image)
 const TBox = styled(Box)
 
-const bgMain = require('../../../assets/background/bg-main.png')
+const bgMain = require('../../../assets/background/bg-materi2.png')
 const scrollHelp = require('../../../assets/icon/scroll-help.png')
 const title = require('../../../assets/title/petunjuk-title.png')
 
@@ -33,9 +33,9 @@ export const HelpScreen = (props: Props) => {
           <TImage size={'sm'} source={title} width={250} height={60} alt="home" />
         </TBox>
         <TBox className="absolute">
-          <TImage className="scale-[.80]" source={scrollHelp} alt="scroll" />
+          <TImage className="scale-[.90]" source={scrollHelp} alt="scroll" />
         </TBox>
-        <TText className="mt-14 h-16" bold size={'md'}>
+        <TText className="mt-10 h-16" bold size={'md'}>
           Media pembelajaran ini materi kosakata bahasa Arab beserta game terkait materi. Pengguna dapat meng-klik tombol atau gambar yang
           tersedia di halaman aplikasi. Perhatikan fungsi tombol berikut:
         </TText>

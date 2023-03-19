@@ -4,7 +4,6 @@ import { styled } from 'nativewind'
 import React from 'react'
 import { RootStackParamList } from '../../navigation/Navigator'
 import { PageWrapper } from '../../components/PageWrapper/PageWrapper'
-import { HomeButton } from '../../components/HomeButton/HomeButton'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Main'>
 
@@ -46,7 +45,7 @@ export const MainScreen = ({ navigation }: Props) => {
               size={'20'}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
-              onPress={() => navigation.navigate('GameSelect', { materialId: 1 })}>
+              onPress={() => navigation.navigate('GameSelect')}>
               <TImage size={'20'} source={playBtn} alt="play" />
             </TButton>
           </TBox>

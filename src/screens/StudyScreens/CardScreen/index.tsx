@@ -7,18 +7,13 @@ import { HomeButton } from '../../../components/HomeButton/HomeButton'
 import { PageWrapper } from '../../../components/PageWrapper/PageWrapper'
 import { SoundButton } from '../../../components/SoundButton/SoundButton'
 import { RootStackParamList } from '../../../navigation/Navigator'
-import { getCurrentLesson, getCurrentTitle } from '../../../utils/Commons'
+import { getCurrentBackground, getCurrentLesson, getCurrentTitle } from '../../../utils/Commons'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'StudyCardScreen'>
 
 const TBox = styled(Box)
 const TButton = styled(Button)
 const TImage = styled(Image)
-
-const bgSekolah = require('../../../../assets/background/bg-sekolah.png')
-const bgRumah = require('../../../../assets/background/bg-rumah.png')
-const bgProfesi = require('../../../../assets/background/bg-profesi.png')
-const bgJalan = require('../../../../assets/background/bg-jalan.png')
 
 const prevBtn = require('../../../../assets/icon/arrow-left.png')
 const nextBtn = require('../../../../assets/icon/arrow-right.png')
@@ -30,30 +25,6 @@ export const StudyCardScreen = (props: Props) => {
 
   const lesson = getCurrentLesson(materialTheme)
   const maxCardLength = lesson.length - 1
-
-  const getCurrentBackground = () => {
-    const { materialTheme } = props.route.params
-
-    switch (materialTheme) {
-      case 'profesi':
-      case 'arah':
-        return bgProfesi
-      case 'fasilitasSekolah':
-      case 'ruangSekolah':
-      case 'peralatanSekolah':
-      case 'perangkatKelas':
-      case 'warna':
-        return bgSekolah
-      case 'kosakataAlamat':
-      case 'angka':
-        return bgJalan
-      case 'ruangRumah':
-      case 'isiRuang':
-      case 'kegiatanHarian':
-      case 'anggotaKeluarga':
-        return bgRumah
-    }
-  }
 
   const nextCard = () => {
     if (currentCard !== maxCardLength) {
@@ -72,7 +43,7 @@ export const StudyCardScreen = (props: Props) => {
   }
 
   return (
-    <PageWrapper image={getCurrentBackground()}>
+    <PageWrapper image={getCurrentBackground(materialTheme)}>
       <TBox className="h-full w-full items-center pt-12">
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />

@@ -11,7 +11,16 @@ import { IsiRuangan } from '../constants/lessons/5-Rumah/IsiRuangan'
 import { RuanganRumah } from '../constants/lessons/5-Rumah/RuanganRumah'
 import { AnggotaKeluarga } from '../constants/lessons/6-Keluarga/Anggota'
 import { KegiatanHarian } from '../constants/lessons/6-Keluarga/KegiatanHarian'
-import { MaterialType } from '../screens/StudyScreens/MenuScreen/MaterialConstant'
+import { MaterialId } from '../constants/Models/Lesson'
+import {
+  Material1,
+  Material2,
+  Material3,
+  Material4,
+  Material5,
+  Material6,
+  MaterialType
+} from '../screens/StudyScreens/MenuScreen/MaterialConstant'
 
 const title11 = require('../../assets/title/1-1.png')
 const title12 = require('../../assets/title/1-2.png')
@@ -26,6 +35,13 @@ const title51 = require('../../assets/title/5-1.png')
 const title52 = require('../../assets/title/5-2.png')
 const title61 = require('../../assets/title/6-1.png')
 const title62 = require('../../assets/title/6-2.png')
+
+const bgSekolah = require('../../assets/background/bg-sekolah.png')
+const bgRumah = require('../../assets/background/bg-rumah.png')
+const bgProfesi = require('../../assets/background/bg-profesi.png')
+const bgJalan = require('../../assets/background/bg-jalan.png')
+const bgKenal = require('../../assets/background/bg-perkenalan.png')
+const bgFasilitassekolah = require('../../assets/background/bg-fasilitassekolah.png')
 
 export const getCurrentLesson = (materialTheme: MaterialType) => {
   switch (materialTheme) {
@@ -86,5 +102,46 @@ export const getCurrentTitle = (materialTheme: MaterialType) => {
       return title61
     case 'anggotaKeluarga':
       return title62
+  }
+}
+
+export const getCurrentMaterial = (materialId: MaterialId) => {
+  switch (materialId) {
+    case 1:
+      return Material1
+    case 2:
+      return Material2
+    case 3:
+      return Material3
+    case 4:
+      return Material4
+    case 5:
+      return Material5
+    case 6:
+      return Material6
+  }
+}
+
+export const getCurrentBackground = (materialTheme: MaterialType) => {
+  switch (materialTheme) {
+    case 'profesi':
+      return bgKenal
+    case 'arah':
+      return bgProfesi
+    case 'fasilitasSekolah':
+    case 'ruangSekolah':
+      return bgFasilitassekolah
+    case 'peralatanSekolah':
+    case 'perangkatKelas':
+    case 'warna':
+      return bgSekolah
+    case 'kosakataAlamat':
+    case 'angka':
+      return bgJalan
+    case 'ruangRumah':
+    case 'isiRuang':
+    case 'kegiatanHarian':
+    case 'anggotaKeluarga':
+      return bgRumah
   }
 }

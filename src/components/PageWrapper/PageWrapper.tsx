@@ -1,6 +1,6 @@
-import { View } from 'native-base'
 import React, { ReactNode } from 'react'
 import { ImageBackground, ImageSourcePropType } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 type Props = {
   children: ReactNode
@@ -9,8 +9,8 @@ type Props = {
 
 export const PageWrapper = (props: Props) => {
   return (
-    <View>
+    <GestureHandlerRootView>
       <ImageBackground source={props.image}>{props.children}</ImageBackground>
-    </View>
+    </GestureHandlerRootView>
   )
 }

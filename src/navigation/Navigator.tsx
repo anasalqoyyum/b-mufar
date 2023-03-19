@@ -11,15 +11,20 @@ import { MaterialType } from '../screens/StudyScreens/MenuScreen/MaterialConstan
 import { StudyCardScreen } from '../screens/StudyScreens/CardScreen'
 import { MemoryGameScreen } from '../screens/MemoryGameScreen'
 import { GameSelectScreen } from '../screens/GameSelectScreen'
+import { LevelSelectScreen } from '../screens/LevelSelectScreen'
+import { MaterialId } from '../constants/Models/Lesson'
+import { MatchGameScreen } from '../screens/MatchGameScreen'
 
 export type RootStackParamList = {
   Main: undefined
   Help: undefined
   StudyMenu: undefined
-  MaterialSelect: { materialId: 1 | 2 | 3 | 4 | 5 | 6 }
+  MaterialSelect: { materialId: MaterialId }
   StudyCardScreen: { materialTheme: MaterialType }
-  MemoryGame: { materialTheme: MaterialType }
-  GameSelect: { materialId: 1 | 2 | 3 | 4 | 5 | 6 }
+  MemoryGame: { materialId: MaterialId }
+  MatchGame: { materialId: MaterialId }
+  GameSelect: undefined
+  LevelSelect: { gameType: 'memory' | 'match' }
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
@@ -33,8 +38,10 @@ export const Navigator = () => {
         <Stack.Screen name="StudyMenu" component={StudyMenuScreen} />
         <Stack.Screen name="MaterialSelect" component={MaterialSelectScreen} />
         <Stack.Screen name="GameSelect" component={GameSelectScreen} />
+        <Stack.Screen name="LevelSelect" component={LevelSelectScreen} />
         <Stack.Screen name="StudyCardScreen" component={StudyCardScreen} />
         <Stack.Screen name="MemoryGame" component={MemoryGameScreen} />
+        <Stack.Screen name="MatchGame" component={MatchGameScreen} />
       </Stack.Navigator>
       <MusicButton />
       <StatusBar hidden />
