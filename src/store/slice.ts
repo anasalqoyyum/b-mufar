@@ -7,14 +7,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { AsyncReducers } from './AsyncReducers'
 import { SyncReducers } from './Reducers'
-import { AppState } from './types'
+import { AppState, MemoryGame } from './types'
+
+export const initialMemoryGame: MemoryGame = {
+  chosenCard: [],
+  correctCard: [],
+  point: 0
+}
 
 const initialState: AppState = {
   apiList: [],
   isFetchingApiList: false,
   fetchApiListError: null,
 
-  musicStatus: 'idle'
+  musicStatus: 'idle',
+
+  memoryGameState: initialMemoryGame
 }
 
 export const slice = createSlice({
@@ -24,4 +32,4 @@ export const slice = createSlice({
   extraReducers: AsyncReducers
 })
 
-export const { setMusicStatus } = slice.actions
+export const { setMusicStatus, setMemoryGameState } = slice.actions

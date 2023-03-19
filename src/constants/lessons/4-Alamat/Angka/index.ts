@@ -10,7 +10,7 @@ export const Angka: LessonType[] = [
   {
     ar: 'اِثْنَانِ',
     id: 'Dua',
-    img: require('../../../../../assets/lesson/4-2/2-2.png'),
+    img: require('../../../../../assets/lesson/4-2/2-dua.png'),
     sound: require('../../../../../assets/lesson/4-2/2-dua.mp3')
   },
   {
@@ -130,8 +130,8 @@ export const Angka: LessonType[] = [
   {
     ar: 'اِثْنَانِ وَعِشْرُوْنَ',
     id: 'Dua Puluh Dua',
-    img: require('../../../../../assets/lesson/4-2/22.png'),
-    sound: require('../../../../../assets/lesson/4-2/22.mp3')
+    img: require('../../../../../assets/lesson/4-2/22-22.png'),
+    sound: require('../../../../../assets/lesson/4-2/22-22.mp3')
   },
   {
     ar: 'ثَلَاثُوْنَ',
