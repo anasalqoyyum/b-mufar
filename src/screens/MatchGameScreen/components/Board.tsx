@@ -1,9 +1,11 @@
-import { Center, Image, Text, View } from 'native-base'
+import { Center, Text, View } from 'native-base'
 import { styled } from 'nativewind'
 import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
 import { DraxProvider, DraxView, DraxSnapbackTargetPreset } from 'react-native-drax'
 import { LessonType } from '../../../constants/Models/Lesson'
+import { Image } from '@rneui/themed'
+import { ActivityIndicator } from 'react-native'
 
 interface WordBlockProps {
   name: string
@@ -18,7 +20,7 @@ interface MatchUpProps {
   board: Record<string, LessonType[]>
 }
 
-const TImage = styled(Image)
+// const TImage = styled(Image)
 const TCenter = styled(Center)
 const TView = styled(View)
 
@@ -76,7 +78,7 @@ const Card = ({ material }: { material: LessonType }) => {
   return (
     <View style={[styles.card]} rounded="lg" overflow="hidden" borderColor="white" borderWidth="3" backgroundColor="coolGray.50">
       <TCenter className="mt-1">
-        <TImage className="z-10" size={['12', '16']} source={img} alt="image" />
+        <Image style={[styles.image, { width: 50, height: 50 }]} PlaceholderContent={<ActivityIndicator />} source={img} alt="image" />
       </TCenter>
     </View>
   )
@@ -198,5 +200,8 @@ const styles = StyleSheet.create({
   },
   invisible: {
     opacity: 0
+  },
+  image: {
+    zIndex: 10
   }
 })
