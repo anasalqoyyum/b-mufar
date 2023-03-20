@@ -36,8 +36,11 @@ export const GameSelectScreen = (props: Props) => {
               onPress={() => props.navigation.navigate('LevelSelect', { gameType: 'memory' })}>
               <Image size={'56'} source={iconMemory} alt="home" />
             </TButton>
-            <TButton size={'56'} className="opacity-25 active:translate-y-1" bgColor={'none'}>
-              {/* onPress={() => props.navigation.navigate('LevelSelect', { gameType: 'match' })}> */}
+            <TButton
+              size={'56'}
+              className="active:translate-y-1 active:opacity-90"
+              bgColor={'none'}
+              onPress={() => props.navigation.navigate('LevelSelect', { gameType: 'match' })}>
               <Image size={'56'} source={iconMatchup} alt="home" />
             </TButton>
           </Flex>

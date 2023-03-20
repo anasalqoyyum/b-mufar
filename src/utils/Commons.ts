@@ -11,7 +11,7 @@ import { IsiRuangan } from '../constants/lessons/5-Rumah/IsiRuangan'
 import { RuanganRumah } from '../constants/lessons/5-Rumah/RuanganRumah'
 import { AnggotaKeluarga } from '../constants/lessons/6-Keluarga/Anggota'
 import { KegiatanHarian } from '../constants/lessons/6-Keluarga/KegiatanHarian'
-import { MaterialId } from '../constants/Models/Lesson'
+import { LessonType, MaterialId } from '../constants/Models/Lesson'
 import {
   Material1,
   Material2,
@@ -144,4 +144,13 @@ export const getCurrentBackground = (materialTheme: MaterialType) => {
     case 'anggotaKeluarga':
       return bgRumah
   }
+}
+
+export const shuffleArray = (array: LessonType[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+
+  return array
 }
