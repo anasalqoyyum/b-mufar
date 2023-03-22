@@ -128,7 +128,7 @@ export const IsiRuangan: LessonType[] = [
     sound: require('../../../../../assets/lesson/5-2/21-jam.mp3')
   },
   {
-    ar: 'مِرْحَضٌ',
+    ar: 'مِرْحَاضٌ',
     id: 'Toilet',
     img: require('../../../../../assets/lesson/5-2/22-toilet.png'),
     sound: require('../../../../../assets/lesson/5-2/22-toilett.mp3')

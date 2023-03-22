@@ -34,7 +34,7 @@ export const SoundButton = (props: Props) => {
   }, [sound])
 
   return (
-    <TBox className="absolute top-16 left-56">
+    <TBox className="absolute top-16 left-56 z-20">
       <TButton size={'16'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={playSound}>
         <Image size={'16'} source={soundBtn} alt="music" />
       </TButton>

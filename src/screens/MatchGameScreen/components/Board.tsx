@@ -20,7 +20,6 @@ interface MatchUpProps {
   board: Record<string, LessonType[]>
 }
 
-// const TImage = styled(Image)
 const TCenter = styled(Center)
 const TView = styled(View)
 
@@ -43,7 +42,7 @@ const WordBlock = ({ name, setCurrentMoving }: Omit<WordBlockProps, 'currentMovi
         setCurrentMoving('')
       }}
       dragPayload={{ text: name, setIsVisible }}>
-      <Text fontSize={'9'}>{name}</Text>
+      <Text fontSize={'12'}>{name}</Text>
     </DraxView>
   )
 }
@@ -65,7 +64,7 @@ const WordBlockBank = ({ name, currentMoving, setPoint }: Omit<WordBlockProps, '
         payload?.setIsVisible?.(false)
         return DraxSnapbackTargetPreset.None
       }}>
-      <Text style={isCorrect ? null : styles.hidden} fontSize={'10'}>
+      <Text style={isCorrect ? null : styles.hidden} fontSize={'11'}>
         {name}
       </Text>
     </DraxView>
@@ -73,12 +72,15 @@ const WordBlockBank = ({ name, currentMoving, setPoint }: Omit<WordBlockProps, '
 }
 
 const Card = ({ material }: { material: LessonType }) => {
-  const { img } = material
+  const { img, id } = material
 
   return (
     <View style={[styles.card]} rounded="lg" overflow="hidden" borderColor="white" borderWidth="3" backgroundColor="coolGray.50">
       <TCenter className="mt-1">
         <Image style={[styles.image, { width: 50, height: 50 }]} PlaceholderContent={<ActivityIndicator />} source={img} alt="image" />
+        <Text marginTop={'3'} fontSize={'9'} fontWeight={'semibold'}>
+          {id}
+        </Text>
       </TCenter>
     </View>
   )
@@ -100,31 +102,36 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board }: MatchUpProps) => {
   return (
     <DraxProvider>
       <View style={styles.container}>
-        <View style={styles.palette}>
-          <View style={styles.paletteRow}>
-            {board.question.slice(0, 4).map((val, idx) => {
-              return (
-                <TView key={`a${idx}`} className="mx-2">
-                  <Card material={val} />
-                  <WordBlockBank name={val.ar} currentMoving={currentMoving} setPoint={updatePoint} />
-                </TView>
-              )
+        <View style={styles.paletteRow}>
+          <View style={styles.paletteCol}>
+            {board.answer.slice(0, 4).map((val, idx) => {
+              return <WordBlock key={`c${idx}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
             })}
           </View>
-          <View style={styles.paletteRow}>
-            {board.question.slice(4, 8).map((val, idx) => {
-              return (
-                <TView key={`b${idx}`} className="mx-2">
-                  <Card material={val} />
-                  <WordBlockBank name={val.ar} currentMoving={currentMoving} setPoint={updatePoint} />
-                </TView>
-              )
-            })}
+          <View style={styles.palette}>
+            <View style={styles.paletteRow}>
+              {board.question.slice(0, 4).map((val, idx) => {
+                return (
+                  <TView key={`a${idx}`} className="mx-2">
+                    <Card material={val} />
+                    <WordBlockBank name={val.ar} currentMoving={currentMoving} setPoint={updatePoint} />
+                  </TView>
+                )
+              })}
+            </View>
+            <View style={styles.paletteRow}>
+              {board.question.slice(4, 8).map((val, idx) => {
+                return (
+                  <TView key={`b${idx}`} className="mx-2">
+                    <Card material={val} />
+                    <WordBlockBank name={val.ar} currentMoving={currentMoving} setPoint={updatePoint} />
+                  </TView>
+                )
+              })}
+            </View>
           </View>
-        </View>
-        <View style={[styles.palette, styles.marginTop]}>
-          <View style={styles.paletteRow}>
-            {board.answer.map((val, idx) => {
+          <View style={styles.paletteCol}>
+            {board.answer.slice(4, 8).map((val, idx) => {
               return <WordBlock key={`c${idx}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
             })}
           </View>
@@ -137,7 +144,6 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board }: MatchUpProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center'
@@ -159,8 +165,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   wordBlock: {
-    width: 50,
-    height: 25,
+    width: 65,
+    height: 30,
     borderRadius: 6,
     borderColor: '#f6a21d',
     marginHorizontal: 8,
@@ -168,8 +174,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fcbf85'
   },
   wordBlockBank: {
-    width: 55,
-    height: 27,
+    width: 70,
+    height: 32,
     borderRadius: 6,
     borderColor: '#f6a21d',
     marginHorizontal: 8,
@@ -177,20 +183,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#efefef'
   },
   card: {
-    width: 75,
-    height: 90,
+    width: 90,
+    height: 105,
     marginBottom: 15
   },
   palette: {
-    display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
-    flexWrap: 'wrap'
+    marginHorizontal: 4
   },
   paletteRow: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginVertical: 8
+  },
+  paletteCol: {
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    marginVertical: 20
   },
   hidden: {
     display: 'none'
