@@ -11,6 +11,7 @@ import { RootStackParamList } from '../../navigation/Navigator'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { initialMemoryGame, setMemoryGameState } from '../../store/slice'
 import { getCurrentBackground, getCurrentLesson, getCurrentMaterial } from '../../utils/Commons'
+import { calculateCurrentGameSize } from '../../utils/Game'
 import { MaterialType } from '../StudyScreens/MenuScreen/MaterialConstant'
 import { MemoryCard } from './components/Card'
 
@@ -18,10 +19,13 @@ type Props = NativeStackScreenProps<RootStackParamList, 'MemoryGame'>
 
 const TBox = styled(Box)
 const THeading = styled(Heading)
-const GAME_SIZE = 10
 
 export const MemoryGameScreen = (props: Props) => {
   const { materialId } = props.route.params
+
+  const GAME_SIZE = calculateCurrentGameSize('memory', materialId)
+  const TOTAL_ROUND = 2
+  const ROUND_BOARD_SIZE = GAME_SIZE / TOTAL_ROUND
 
   const lessons = getCurrentMaterial(materialId)
   const gameState = useAppSelector(state => state.reducer.memoryGameState)
@@ -50,7 +54,7 @@ export const MemoryGameScreen = (props: Props) => {
         const more = shuffleArray(currentMaterial).slice(0, minus)
         material = [...material, ...more]
       }
-      const arr = shuffleArray(material.slice(0, 5))
+      const arr = shuffleArray(material.slice(0, ROUND_BOARD_SIZE))
 
       board = [...arr, ...arr]
       setSelectedMaterial(material)
@@ -59,12 +63,13 @@ export const MemoryGameScreen = (props: Props) => {
 
     if (section === 1) {
       dispatch(setMemoryGameState(initialMemoryGame))
-    } else if (section === 2) {
+    } else if (section >= 2) {
       const nextInitialMemoryGame = {
         ...initialMemoryGame,
         point: gameState.point
       }
-      const preProcessArr = shuffleArray(selectedMaterial.slice(5, 10))
+      // slice for the next round
+      const preProcessArr = shuffleArray(selectedMaterial.slice(ROUND_BOARD_SIZE * (section - 1), ROUND_BOARD_SIZE * section))
 
       board = [...preProcessArr, ...preProcessArr]
       dispatch(setMemoryGameState(nextInitialMemoryGame))
@@ -118,10 +123,10 @@ export const MemoryGameScreen = (props: Props) => {
     }
   }
 
-  const checkSectionDone = gameState.point !== 0 && gameState.point % 5 === 0 && gameState.point <= GAME_SIZE
+  const checkSectionDone = gameState.point !== 0 && gameState.point % ROUND_BOARD_SIZE === 0 && gameState.point <= GAME_SIZE
 
   const goNextSection = () => {
-    if (checkSectionDone && section !== GAME_SIZE / 5) {
+    if (checkSectionDone && section !== TOTAL_ROUND) {
       setSection(section + 1)
     }
   }

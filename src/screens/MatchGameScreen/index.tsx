@@ -9,31 +9,32 @@ import { Winning } from '../../components/Winning/Winning'
 import { LessonType } from '../../constants/Models/Lesson'
 import { RootStackParamList } from '../../navigation/Navigator'
 import { getCurrentBackground, getCurrentLesson, getCurrentMaterial, shuffleArray } from '../../utils/Commons'
+import { calculateCurrentGameSize } from '../../utils/Game'
 import { MaterialType } from '../StudyScreens/MenuScreen/MaterialConstant'
 import { MatchUpBoard } from './components/Board'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MatchGame'>
 
-const GAME_SIZE = 8
-
 const TBox = styled(Box)
 
-const title = require('../../../assets/title/memoryTitle.png')
+// const title = require('../../../assets/title/memoryTitle.png')
 
 export const MatchGameScreen = (props: Props) => {
   const [isWin, setIsWin] = useState(false)
   const { materialId } = props.route.params
 
-  const lessons = getCurrentMaterial(materialId)
+  const GAME_SIZE = calculateCurrentGameSize('match', materialId)
+  const TOTAL_ROUND = materialId <= 3 ? 1 : 2
+  const ROUND_BOARD_SIZE = GAME_SIZE / TOTAL_ROUND
 
+  const lessons = getCurrentMaterial(materialId)
   const [init, setInit] = useState(false)
-  // const [board, setBoard] = useState<LessonType[]>([])
   const [gameBoard, setGameBoard] = useState<Record<string, LessonType[]>>({
     question: [],
     answer: []
   })
-  // const [selectedMaterial, setSelectedMaterial] = useState<LessonType[]>([])
-  // const [section, setSection] = useState(1)
+  const [selectedMaterial, setSelectedMaterial] = useState<LessonType[]>([])
+  const [section, setSection] = useState(1)
 
   const createGameBoard = () => {
     let board: LessonType[] = []
@@ -53,11 +54,15 @@ export const MatchGameScreen = (props: Props) => {
         const more = shuffleArray(currentMaterial).slice(0, minus)
         material = [...material, ...more]
       }
-      // const arr = shuffleArray(material.slice(0, 4))
 
-      board = material
-      // setSelectedMaterial(material)
+      board = material.slice(0, ROUND_BOARD_SIZE)
+      setSelectedMaterial(material)
       setInit(true)
+    }
+
+    if (section >= 2) {
+      // slice for the next round
+      board = shuffleArray(selectedMaterial.slice(ROUND_BOARD_SIZE * (section - 1), ROUND_BOARD_SIZE * section))
     }
 
     let question = [...board]
@@ -78,9 +83,13 @@ export const MatchGameScreen = (props: Props) => {
     return getCurrentBackground(materialTheme)
   }
 
+  const goNextSection = () => {
+    setSection(section + 1)
+  }
+
   useEffect(() => {
     createGameBoard()
-  }, [])
+  }, [section])
 
   return (
     <PageWrapper image={getBg()}>
@@ -93,7 +102,15 @@ export const MatchGameScreen = (props: Props) => {
           <TImage size={'sm'} source={title} width={200} height={50} alt="home" />
         </TBox> */}
         <View>
-          <MatchUpBoard setIsWin={setIsWin} gameSize={GAME_SIZE} board={gameBoard} />
+          <MatchUpBoard
+            setIsWin={setIsWin}
+            gameSize={GAME_SIZE}
+            roundSize={ROUND_BOARD_SIZE}
+            totalRound={TOTAL_ROUND}
+            board={gameBoard}
+            section={section}
+            goNextSection={goNextSection}
+          />
         </View>
       </TBox>
     </PageWrapper>

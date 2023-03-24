@@ -1,6 +1,6 @@
 import { Center, Text, View } from 'native-base'
 import { styled } from 'nativewind'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native'
 import { DraxProvider, DraxView, DraxSnapbackTargetPreset } from 'react-native-drax'
 import { LessonType } from '../../../constants/Models/Lesson'
@@ -17,7 +17,11 @@ interface WordBlockProps {
 interface MatchUpProps {
   setIsWin: (val: boolean) => void
   gameSize: number
+  roundSize: number
+  totalRound: number
+  section: number
   board: Record<string, LessonType[]>
+  goNextSection: () => void
 }
 
 const TCenter = styled(Center)
@@ -86,9 +90,17 @@ const Card = ({ material }: { material: LessonType }) => {
   )
 }
 
-export const MatchUpBoard = ({ setIsWin, gameSize, board }: MatchUpProps) => {
+export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSize, totalRound, section }: MatchUpProps) => {
   const [currentMoving, setCurrentMoving] = useState('')
   const [point, setPoint] = useState(0)
+
+  const checkSectionDone = point !== 0 && point % roundSize === 0 && point <= gameSize
+
+  const nextSection = () => {
+    if (checkSectionDone && section !== totalRound) {
+      goNextSection()
+    }
+  }
 
   const updatePoint = () => {
     const newPoint = point + 1
@@ -98,6 +110,10 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board }: MatchUpProps) => {
       setIsWin(true)
     }
   }
+
+  useEffect(() => {
+    setTimeout(nextSection, 1000)
+  }, [point])
 
   return (
     <DraxProvider>

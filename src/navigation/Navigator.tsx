@@ -15,14 +15,18 @@ import { LevelSelectScreen } from '../screens/LevelSelectScreen'
 import { MaterialId } from '../constants/Models/Lesson'
 import { MatchGameScreen } from '../screens/MatchGameScreen'
 
+type GameParams = {
+  materialId: MaterialId
+}
+
 export type RootStackParamList = {
   Main: undefined
   Help: undefined
   StudyMenu: undefined
   MaterialSelect: { materialId: MaterialId }
   StudyCardScreen: { materialTheme: MaterialType }
-  MemoryGame: { materialId: MaterialId }
-  MatchGame: { materialId: MaterialId }
+  MemoryGame: GameParams
+  MatchGame: GameParams
   GameSelect: undefined
   LevelSelect: { gameType: 'memory' | 'match' }
 }
