@@ -174,12 +174,12 @@ export const MemoryGameScreen = (props: Props) => {
         )} */}
         <TBox>
           <Flex height={['30%', '45%']} flexDirection={'row'}>
-            {board.slice(0, 5).map((val, idx) => {
+            {board.slice(0, ROUND_BOARD_SIZE).map((val, idx) => {
               return <MemoryCard key={idx + val.id} material={val} setOpenedCard={setOpenedCard} />
             })}
           </Flex>
           <Flex height={['30%', '45%']} flexDirection={'row'}>
-            {board.slice(5, 10).map((val, idx) => {
+            {board.slice(ROUND_BOARD_SIZE).map((val, idx) => {
               return <MemoryCard key={idx + val.id} material={val} setOpenedCard={setOpenedCard} />
             })}
           </Flex>

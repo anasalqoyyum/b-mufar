@@ -97,7 +97,6 @@ export const MatchGameScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />
         {isWin && <Winning navigation={props.navigation} />}
-
         {/* <TBox>
           <TImage size={'sm'} source={title} width={200} height={50} alt="home" />
         </TBox> */}

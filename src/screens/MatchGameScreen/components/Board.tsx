@@ -1,4 +1,4 @@
-import { Center, Text, View } from 'native-base'
+import { Center, Heading, Text, View } from 'native-base'
 import { styled } from 'nativewind'
 import React, { useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native'
@@ -26,6 +26,7 @@ interface MatchUpProps {
 
 const TCenter = styled(Center)
 const TView = styled(View)
+const THeading = styled(Heading)
 
 const WordBlock = ({ name, setCurrentMoving }: Omit<WordBlockProps, 'currentMoving' | 'setPoint'>) => {
   const [isVisible, setIsVisible] = useState(true)
@@ -118,17 +119,20 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
   return (
     <DraxProvider>
       <View style={styles.container}>
+        <THeading size={'md'} className="rounded-md border border-[#f6a21d] bg-[#fcbf85] py-1 px-4 text-gray-100">
+          Ronde {section}
+        </THeading>
         <View style={styles.paletteRow}>
           <View style={styles.paletteCol}>
-            {board.answer.slice(0, 4).map((val, idx) => {
-              return <WordBlock key={`c${idx}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
+            {board.answer.slice(0, 3).map(val => {
+              return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
             })}
           </View>
           <View style={styles.palette}>
             <View style={styles.paletteRow}>
-              {board.question.slice(0, 4).map((val, idx) => {
+              {board.question.slice(0, 3).map(val => {
                 return (
-                  <TView key={`a${idx}`} className="mx-2">
+                  <TView key={`a${val.id}`} className="mx-2">
                     <Card material={val} />
                     <WordBlockBank name={val.ar} currentMoving={currentMoving} setPoint={updatePoint} />
                   </TView>
@@ -136,9 +140,9 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
               })}
             </View>
             <View style={styles.paletteRow}>
-              {board.question.slice(4, 8).map((val, idx) => {
+              {board.question.slice(3).map(val => {
                 return (
-                  <TView key={`b${idx}`} className="mx-2">
+                  <TView key={`b${val.id}`} className="mx-2">
                     <Card material={val} />
                     <WordBlockBank name={val.ar} currentMoving={currentMoving} setPoint={updatePoint} />
                   </TView>
@@ -147,8 +151,8 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
             </View>
           </View>
           <View style={styles.paletteCol}>
-            {board.answer.slice(4, 8).map((val, idx) => {
-              return <WordBlock key={`c${idx}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
+            {board.answer.slice(3).map(val => {
+              return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
             })}
           </View>
         </View>
