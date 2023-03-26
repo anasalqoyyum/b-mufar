@@ -116,6 +116,8 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
     setTimeout(nextSection, 1000)
   }, [point])
 
+  const cardNumber = Math.round(roundSize / 2)
+
   return (
     <DraxProvider>
       <View style={styles.container}>
@@ -124,13 +126,13 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
         </THeading>
         <View style={styles.paletteRow}>
           <View style={styles.paletteCol}>
-            {board.answer.slice(0, 3).map(val => {
+            {board.answer.slice(0, cardNumber).map(val => {
               return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
             })}
           </View>
           <View style={styles.palette}>
             <View style={styles.paletteRow}>
-              {board.question.slice(0, 3).map(val => {
+              {board.question.slice(0, cardNumber).map(val => {
                 return (
                   <TView key={`a${val.id}`} className="mx-2">
                     <Card material={val} />
@@ -140,7 +142,7 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
               })}
             </View>
             <View style={styles.paletteRow}>
-              {board.question.slice(3).map(val => {
+              {board.question.slice(cardNumber).map(val => {
                 return (
                   <TView key={`b${val.id}`} className="mx-2">
                     <Card material={val} />

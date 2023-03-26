@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { Box, Flex, Heading } from 'native-base'
+import { Box, Flex, Heading, Image, Text } from 'native-base'
 import { styled } from 'nativewind'
 import React, { useState, useEffect } from 'react'
 import { BackButton } from '../../components/HomeButton/BackButton'
@@ -19,13 +19,16 @@ type Props = NativeStackScreenProps<RootStackParamList, 'MemoryGame'>
 
 const TBox = styled(Box)
 const THeading = styled(Heading)
+const TText = styled(Text)
+
+const timer = require('../../../assets/icon/timer.png')
 
 export const MemoryGameScreen = (props: Props) => {
   const { materialId } = props.route.params
 
   const GAME_SIZE = calculateCurrentGameSize('memory', materialId)
   const TOTAL_ROUND = 2
-  const ROUND_BOARD_SIZE = GAME_SIZE / TOTAL_ROUND
+  const ROUND_BOARD_SIZE = Math.round(GAME_SIZE / TOTAL_ROUND)
 
   const lessons = getCurrentMaterial(materialId)
   const gameState = useAppSelector(state => state.reducer.memoryGameState)
@@ -33,6 +36,8 @@ export const MemoryGameScreen = (props: Props) => {
 
   const [init, setInit] = useState(false)
   const [board, setBoard] = useState<LessonType[]>([])
+  const [time, setTime] = useState(0)
+  const [isWin, setIsWin] = useState(false)
   const [selectedMaterial, setSelectedMaterial] = useState<LessonType[]>([])
   const [section, setSection] = useState(1)
 
@@ -126,6 +131,10 @@ export const MemoryGameScreen = (props: Props) => {
   const checkSectionDone = gameState.point !== 0 && gameState.point % ROUND_BOARD_SIZE === 0 && gameState.point <= GAME_SIZE
 
   const goNextSection = () => {
+    if (gameState.point === GAME_SIZE) {
+      setIsWin(true)
+    }
+
     if (checkSectionDone && section !== TOTAL_ROUND) {
       setSection(section + 1)
     }
@@ -148,13 +157,36 @@ export const MemoryGameScreen = (props: Props) => {
     setTimeout(goNextSection, 1000)
   }, [gameState.point])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(time => time + 1)
+    }, 1000)
+
+    if (isWin) {
+      clearInterval(timer)
+      setTime(time)
+    }
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [isWin])
+
+  const formatTime = `${`${Math.floor(time / 60)}`.padStart(2, '0')}:${`${time % 60}`.padStart(2, '0')}`
+
   return (
     <PageWrapper image={getBg()}>
       <TBox className="h-full w-full items-center pt-5">
         <THeading size={'md'} className="mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-1 px-4 text-gray-100">
           Ronde {section}
         </THeading>
-        {gameState.point === GAME_SIZE && <Winning navigation={props.navigation} />}
+        {isWin && <Winning navigation={props.navigation} />}
+        <TBox className="absolute top-4 right-8 z-10">
+          <Image zIndex={10} size={'16'} source={timer} alt="home" />
+          <TBox className="absolute inset-0 z-10 items-center justify-center">
+            <TText>{formatTime}</TText>
+          </TBox>
+        </TBox>
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />
         {/* TODO: FIX THIS LATER */}
