@@ -86,10 +86,10 @@ export const MemoryCard = (props: Props) => {
           backgroundColor="coolGray.50">
           <TCenter className="mt-1">
             <TImage className="z-10" size={['12', '16']} source={img} alt="image" />
-            <Text marginTop={'2'} fontSize={['9', '11']} fontWeight={'semibold'}>
+            <Text textAlign={'center'} fontSize={['16']} fontWeight={'semibold'}>
               {ar}
             </Text>
-            <Text marginTop={'1'} fontSize={['8', '10']} fontWeight={'semibold'}>
+            <Text marginTop={'1'} textAlign={'center'} fontSize={['11']} fontWeight={'semibold'}>
               {id}
             </Text>
           </TCenter>

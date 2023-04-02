@@ -47,8 +47,8 @@ export const StudyCardScreen = (props: Props) => {
       <TBox className="h-full w-full items-center pt-12">
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />
-        <TBox className="absolute right-8 top-4">
-          <TImage size={'sm'} source={getCurrentTitle(materialTheme)} width={200} height={50} alt="home" />
+        <TBox className="absolute right-2 top-4">
+          <TImage size={'sm'} source={getCurrentTitle(materialTheme)} width={200} height={125} alt="home" />
         </TBox>
         {currentCard !== 0 && (
           <TBox className="absolute left-28 top-36 z-10">
@@ -71,7 +71,7 @@ export const StudyCardScreen = (props: Props) => {
               <Heading size="md" fontWeight={'semibold'} ml="-1">
                 {lesson[currentCard].id}
               </Heading>
-              <Heading size={'lg'} fontWeight={'semibold'}>
+              <Heading size={'xl'} fontWeight={'semibold'}>
                 {lesson[currentCard].ar}
               </Heading>
             </Stack>

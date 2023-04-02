@@ -35,7 +35,7 @@ export const LevelSelectScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />
         <TBox>
-          <TImage size={'sm'} source={title} width={200} height={50} alt="home" />
+          <TImage size={'sm'} source={title} width={400} height={50} alt="home" />
         </TBox>
         <TBox className="scale-[.9]">
           <Flex flexDirection={'row'}>

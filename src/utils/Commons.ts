@@ -38,10 +38,17 @@ const title62 = require('../../assets/title/6-2.png')
 
 const bgSekolah = require('../../assets/background/bg-sekolah.png')
 const bgRumah = require('../../assets/background/bg-rumah.png')
-const bgProfesi = require('../../assets/background/bg-profesi.png')
+const bgWarna = require('../../assets/background/bg-warna.png')
+const bgAngka = require('../../assets/background/bg-angka.png')
+const bgArah = require('../../assets/background/bg-arah.png')
+const bgRuangRumah = require('../../assets/background/bg-ruangrumah.png')
+const bgIsiRuang = require('../../assets/background/bg-isiruang.png')
 const bgJalan = require('../../assets/background/bg-jalan.png')
 const bgKenal = require('../../assets/background/bg-perkenalan.png')
+const bgKegiatan = require('../../assets/background/bg-kegiatanharian.png')
 const bgFasilitassekolah = require('../../assets/background/bg-fasilitassekolah.png')
+const bgPeralatanSekolah = require('../../assets/background/bg-peralatansekolah.png')
+const bgPerangkatkelaws = require('../../assets/background/bg-perangkatkelaws.png')
 
 export const getCurrentLesson = (materialTheme: MaterialType) => {
   switch (materialTheme) {
@@ -127,22 +134,29 @@ export const getCurrentBackground = (materialTheme: MaterialType) => {
     case 'profesi':
       return bgKenal
     case 'arah':
-      return bgProfesi
+      return bgArah
     case 'fasilitasSekolah':
-    case 'ruangSekolah':
       return bgFasilitassekolah
-    case 'peralatanSekolah':
-    case 'perangkatKelas':
-    case 'warna':
+    case 'ruangSekolah':
       return bgSekolah
+    case 'peralatanSekolah':
+      return bgPeralatanSekolah
+    case 'perangkatKelas':
+      return bgPerangkatkelaws
+    case 'warna':
+      return bgWarna
     case 'kosakataAlamat':
-    case 'angka':
       return bgJalan
+    case 'angka':
+      return bgAngka
     case 'ruangRumah':
+      return bgRuangRumah
     case 'isiRuang':
-    case 'kegiatanHarian':
+      return bgIsiRuang
     case 'anggotaKeluarga':
       return bgRumah
+    case 'kegiatanHarian':
+      return bgKegiatan
   }
 }
 

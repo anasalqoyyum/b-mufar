@@ -30,7 +30,7 @@ export const HelpScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.navigate('Main')} />
         <TBox>
-          <TImage size={'sm'} source={title} width={250} height={60} alt="home" />
+          <TImage size={'sm'} source={title} width={400} height={60} alt="home" />
         </TBox>
         <TBox className="absolute">
           <TImage className="scale-[.90]" source={scrollHelp} alt="scroll" />

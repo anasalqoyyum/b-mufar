@@ -177,9 +177,14 @@ export const MemoryGameScreen = (props: Props) => {
   return (
     <PageWrapper image={getBg()}>
       <TBox className="h-full w-full items-center pt-5">
-        <THeading size={'md'} className="mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-1 px-4 text-gray-100">
-          Ronde {section}
-        </THeading>
+        <Flex flexDirection={'row'}>
+          <THeading size={'md'} className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+            Ronde {section}
+          </THeading>
+          <THeading size={'md'} className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+            الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
+          </THeading>
+        </Flex>
         {isWin && <Winning navigation={props.navigation} />}
         <TBox className="absolute top-4 right-8 z-10">
           <Image zIndex={10} size={'16'} source={timer} alt="home" />

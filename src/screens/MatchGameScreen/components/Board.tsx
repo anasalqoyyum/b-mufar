@@ -1,4 +1,4 @@
-import { Center, Heading, Text, View } from 'native-base'
+import { Center, Flex, Heading, Text, View } from 'native-base'
 import { styled } from 'nativewind'
 import React, { useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native'
@@ -47,7 +47,9 @@ const WordBlock = ({ name, setCurrentMoving }: Omit<WordBlockProps, 'currentMovi
         setCurrentMoving('')
       }}
       dragPayload={{ text: name, setIsVisible }}>
-      <Text fontSize={'12'}>{name}</Text>
+      <Text fontSize={'18'} textAlign={'center'}>
+        {name}
+      </Text>
     </DraxView>
   )
 }
@@ -83,7 +85,7 @@ const Card = ({ material }: { material: LessonType }) => {
     <View style={[styles.card]} rounded="lg" overflow="hidden" borderColor="white" borderWidth="3" backgroundColor="coolGray.50">
       <TCenter className="mt-1">
         <Image style={[styles.image, { width: 50, height: 50 }]} PlaceholderContent={<ActivityIndicator />} source={img} alt="image" />
-        <Text marginTop={'3'} fontSize={'9'} fontWeight={'semibold'}>
+        <Text marginTop={'3'} fontSize={'12'} textAlign={'center'} fontWeight={'semibold'}>
           {id}
         </Text>
       </TCenter>
@@ -121,9 +123,14 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
   return (
     <DraxProvider>
       <View style={styles.container}>
-        <THeading size={'md'} className="rounded-md border border-[#f6a21d] bg-[#fcbf85] py-1 px-4 text-gray-100">
-          Ronde {section}
-        </THeading>
+        <Flex flexDirection={'row'}>
+          <THeading size={'md'} className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+            Ronde {section}
+          </THeading>
+          <THeading size={'md'} className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+            الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
+          </THeading>
+        </Flex>
         <View style={styles.paletteRow}>
           <View style={styles.paletteCol}>
             {board.answer.slice(0, cardNumber).map(val => {
