@@ -1,14 +1,17 @@
-import { Box, Button, Image } from 'native-base'
+import { Box, Button, Flex, Heading, Image } from 'native-base'
 import { styled } from 'nativewind'
 import React from 'react'
 
 type Props = {
   navigation: any
   time?: number
+  isScore?: boolean
+  score?: number
 }
 
 const TBox = styled(Box)
 const TButton = styled(Button)
+const THeading = styled(Heading)
 
 const oneStar = require('../../../assets/icon/1star.png')
 const twoStar = require('../../../assets/icon/2star.png')
@@ -30,9 +33,21 @@ export const Winning = (props: Props) => {
   }
 
   return (
-    <TBox className="absolute top-6 z-30">
+    <TBox className="absolute top-6 z-30 items-center">
       <Image size={'md'} source={getImage()} width={350} height={350} alt="home" />
-      <TBox className="z-100 absolute bottom-16 right-24">
+      {props.score && (
+        <TBox className="z-100 absolute bottom-6">
+          <Flex flexDirection={'row'}>
+            <THeading size={'md'} className="mx-2 rounded-md border border-[#f6a21d] bg-[#f5e5b5] py-2 px-4 text-gray-900">
+              Skor : {props.score}
+            </THeading>
+            <THeading size={'md'} className="mx-2 rounded-md border border-[#f6a21d] bg-[#f5e5b5] py-2 px-4 text-gray-900">
+              نَتِيْجَةٌ : {props.score?.toLocaleString('ar')}
+            </THeading>
+          </Flex>
+        </TBox>
+      )}
+      <TBox className="z-100 absolute bottom-20 right-24">
         <TButton
           size={'12'}
           className="active:translate-y-1 active:opacity-90"
@@ -41,7 +56,7 @@ export const Winning = (props: Props) => {
           <Image size={'12'} source={homeBtn} alt="home" />
         </TButton>
       </TBox>
-      <TBox className="absolute bottom-16 left-24 z-10">
+      <TBox className="absolute bottom-20 left-24 z-10">
         <TButton size={'12'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={() => props.navigation.goBack()}>
           <Image size={'12'} source={backBtn} alt="home" />
         </TButton>

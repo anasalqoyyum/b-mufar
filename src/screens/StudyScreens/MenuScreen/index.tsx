@@ -34,7 +34,7 @@ export const StudyMenuScreen = (props: Props) => {
         <TBox>
           <TImage size={'sm'} source={title} width={400} height={50} alt="home" />
         </TBox>
-        <TBox className="scale-[.9]">
+        <TBox className="scale-[.95]">
           <Flex flexDirection={'row'} marginBottom={2}>
             <TButton
               size={'40'}

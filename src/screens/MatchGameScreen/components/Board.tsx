@@ -11,11 +11,14 @@ interface WordBlockProps {
   name: string
   currentMoving: string
   setCurrentMoving: (val: string) => void
-  setPoint: () => void
+  setPoint: (type?: 'plus' | 'minus' | 'sameMinus' | 'samePlus') => void
+  setCount: (isBank?: boolean) => void
 }
 
 interface MatchUpProps {
   setIsWin: (val: boolean) => void
+  setPoint: (val: number) => void
+  point: number
   gameSize: number
   roundSize: number
   totalRound: number
@@ -28,7 +31,7 @@ const TCenter = styled(Center)
 const TView = styled(View)
 const THeading = styled(Heading)
 
-const WordBlock = ({ name, setCurrentMoving }: Omit<WordBlockProps, 'currentMoving' | 'setPoint'>) => {
+const WordBlock = ({ name, setCurrentMoving, setCount }: Omit<WordBlockProps, 'currentMoving' | 'setPoint'>) => {
   const [isVisible, setIsVisible] = useState(true)
 
   return (
@@ -38,12 +41,13 @@ const WordBlock = ({ name, setCurrentMoving }: Omit<WordBlockProps, 'currentMovi
       draggingStyle={styles.dragging}
       dragReleasedStyle={styles.dragging}
       onDragStart={() => {
-        setCurrentMoving(name)
+        setCurrentMoving('fromBlock')
       }}
       onDragEnd={() => {
         setCurrentMoving('')
       }}
       onDragDrop={() => {
+        setCount()
         setCurrentMoving('')
       }}
       dragPayload={{ text: name, setIsVisible }}>
@@ -54,25 +58,77 @@ const WordBlock = ({ name, setCurrentMoving }: Omit<WordBlockProps, 'currentMovi
   )
 }
 
-const WordBlockBank = ({ name, currentMoving, setPoint }: Omit<WordBlockProps, 'setCurrentMoving'>) => {
+const WordBlockBank = ({ name, currentMoving, setPoint, setCurrentMoving }: WordBlockProps) => {
   const [isCorrect, setIsCorrect] = useState(false)
-  const receptive = !isCorrect && currentMoving === name
+  const [isVisible, setIsVisible] = useState(false)
+  const [currentName, setCurrentName] = useState('')
 
   return (
     <DraxView
-      style={[styles.centeredContent, styles.receptive, isCorrect ? styles.wordBlock : styles.wordBlockBank]}
+      style={[styles.centeredContent, styles.receptive, isVisible ? styles.wordBlock : styles.wordBlockBank]}
       otherDraggingStyle={styles.receiving}
       // TODO: Debugging Purpose
       // receivingStyle={styles.receiving}
-      receptive={receptive}
+      receptive={isVisible ? currentMoving !== 'fromBlock' : true}
       onReceiveDragDrop={({ dragged: { payload } }) => {
-        setPoint()
-        setIsCorrect(true)
-        payload?.setIsVisible?.(false)
+        if (!isCorrect && name === payload.text) {
+          setPoint('plus')
+          setIsCorrect(true)
+        }
+
+        setCurrentName(payload.text)
+
+        // IF BOTH OF THEM ALREADY HAS VALUE
+        if (currentName && isVisible) {
+          payload.setCurrentName(currentName)
+          setIsVisible(true)
+
+          if (isCorrect && payload.isCorrect) {
+            setPoint('sameMinus')
+            setIsCorrect(false)
+            payload.setIsCorrect(false)
+          } else if (!isCorrect && !payload.isCorrect && name === payload.text && payload.name === currentName) {
+            setPoint('samePlus')
+            setIsCorrect(true)
+            payload.setIsCorrect(true)
+          } else if (!isCorrect && !payload.isCorrect && name !== payload.text && payload.name === currentName) {
+            setPoint('plus')
+            setIsCorrect(false)
+            payload.setIsCorrect(true)
+          } else if (isCorrect && !payload.isCorrect) {
+            setPoint('minus')
+            setIsCorrect(false)
+            payload.setIsCorrect(false)
+          } else if (!isCorrect && payload.isCorrect && name === payload.text && payload.name === currentName) {
+            setPoint('plus')
+            setIsCorrect(true)
+            payload.setIsCorrect(false)
+          }
+        } else {
+          setIsVisible(true)
+          payload.setIsVisible(false)
+        }
         return DraxSnapbackTargetPreset.None
+      }}
+      dragPayload={{ text: currentName, name, isCorrect, setIsVisible, setCurrentName, setIsCorrect }}
+      draggingStyle={styles.dragging}
+      dragReleasedStyle={styles.dragging}
+      onDragStart={() => {
+        setCurrentMoving(currentName)
+      }}
+      onDragEnd={() => {
+        setCurrentMoving('')
+      }}
+      onDragDrop={() => {
+        if (isCorrect) {
+          setPoint('minus')
+          setIsCorrect(false)
+        }
+        setCurrentMoving('')
       }}>
-      <Text style={isCorrect ? null : styles.hidden} fontSize={'11'}>
-        {name}
+      {/* <Text>{isCorrect ? 'true' : 'false'}</Text> */}
+      <Text style={isVisible ? null : styles.hidden} fontSize={'18'} textAlign={'center'}>
+        {currentName}
       </Text>
     </DraxView>
   )
@@ -93,11 +149,18 @@ const Card = ({ material }: { material: LessonType }) => {
   )
 }
 
-export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSize, totalRound, section }: MatchUpProps) => {
+export const MatchUpBoard = (props: MatchUpProps) => {
+  const { setIsWin, setPoint, point, gameSize, board, goNextSection, roundSize, totalRound, section } = props
+  // No need currentMoving
   const [currentMoving, setCurrentMoving] = useState('')
-  const [point, setPoint] = useState(0)
+  const [count, setCount] = useState(0)
+  // const [point, setPoint] = useState(0)
 
-  const checkSectionDone = point !== 0 && point % roundSize === 0 && point <= gameSize
+  if (count === gameSize) {
+    setIsWin(true)
+  }
+
+  const checkSectionDone = count !== 0 && count % roundSize === 0 && count <= gameSize
 
   const nextSection = () => {
     if (checkSectionDone && section !== totalRound) {
@@ -105,18 +168,36 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
     }
   }
 
-  const updatePoint = () => {
-    const newPoint = point + 1
-    setPoint(newPoint)
+  const updatePoint = (type: 'plus' | 'minus' | 'samePlus' | 'sameMinus' = 'plus') => {
+    let newPoint = point
+    if (type === 'plus') {
+      newPoint = newPoint + 1
+    } else if (type === 'samePlus') {
+      newPoint = newPoint + 2
+    } else if (type === 'sameMinus') {
+      newPoint = newPoint - 2
+    } else {
+      newPoint = newPoint - 1
+    }
 
-    if (newPoint === gameSize) {
+    setPoint(newPoint)
+  }
+
+  const updateCounter = (isBank?: boolean) => {
+    if (isBank) return
+    const newCount = count + 1
+    setCount(newCount)
+  }
+
+  const updateWin = () => {
+    if (count === gameSize) {
       setIsWin(true)
     }
   }
 
   useEffect(() => {
     setTimeout(nextSection, 1000)
-  }, [point])
+  }, [count])
 
   const cardNumber = Math.round(roundSize / 2)
 
@@ -130,11 +211,13 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
           <THeading size={'md'} className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
           </THeading>
+          {/* <Text>{point}</Text>
+          <Text>{count}</Text> */}
         </Flex>
         <View style={styles.paletteRow}>
           <View style={styles.paletteCol}>
             {board.answer.slice(0, cardNumber).map(val => {
-              return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
+              return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} setCount={updateCounter} />
             })}
           </View>
           <View style={styles.palette}>
@@ -143,7 +226,13 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
                 return (
                   <TView key={`a${val.id}`} className="mx-2">
                     <Card material={val} />
-                    <WordBlockBank name={val.ar} currentMoving={currentMoving} setPoint={updatePoint} />
+                    <WordBlockBank
+                      name={val.ar}
+                      currentMoving={currentMoving}
+                      setCurrentMoving={setCurrentMoving}
+                      setPoint={updatePoint}
+                      setCount={updateCounter}
+                    />
                   </TView>
                 )
               })}
@@ -153,7 +242,13 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
                 return (
                   <TView key={`b${val.id}`} className="mx-2">
                     <Card material={val} />
-                    <WordBlockBank name={val.ar} currentMoving={currentMoving} setPoint={updatePoint} />
+                    <WordBlockBank
+                      name={val.ar}
+                      currentMoving={currentMoving}
+                      setCurrentMoving={setCurrentMoving}
+                      setPoint={updatePoint}
+                      setCount={updateCounter}
+                    />
                   </TView>
                 )
               })}
@@ -161,7 +256,7 @@ export const MatchUpBoard = ({ setIsWin, gameSize, board, goNextSection, roundSi
           </View>
           <View style={styles.paletteCol}>
             {board.answer.slice(3).map(val => {
-              return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} />
+              return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} setCount={updateCounter} />
             })}
           </View>
         </View>
