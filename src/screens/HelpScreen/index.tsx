@@ -36,9 +36,9 @@ export const HelpScreen = (props: Props) => {
           <TImage className="scale-[.90]" source={scrollHelp} alt="scroll" />
         </TBox>
         <TBox className="w-1/2 items-center">
-          <TText className="mt-8 h-16" bold size={'md'}>
-            Media pembelajaran ini materi kosakata bahasa Arab beserta game terkait materi. Pengguna dapat meng-klik tombol atau gambar yang
-            tersedia di halaman aplikasi. Perhatikan fungsi tombol berikut:
+          <TText className="mt-14 h-16" bold size={'md'}>
+            Media pembelajaran ini berisi materi kosakata bahasa Arab beserta game terkait materi. Pengguna dapat meng-klik tombol atau
+            gambar yang tersedia di halaman aplikasi. Perhatikan fungsi tombol berikut:
           </TText>
           <TText className="h-11 pt-1" bold size={'md'}>
             <TImage size={'8'} source={homeBtn} alt="homehelp" /> Menuju ke halaman menu utama
