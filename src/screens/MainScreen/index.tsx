@@ -30,8 +30,8 @@ export const MainScreen = ({ navigation }: Props) => {
           <TImage className="mb-4 h-auto w-80 -rotate-6" source={textLogo} alt="logo" />
           <TText className="text-base font-semibold text-yellow-600">Belajar Mufradat Bahasa Arab</TText>
         </TBox>
-        <TStack direction={{ base: 'row' }} space={4}>
-          <TBox>
+        <TStack className="items-center" alignItems={'center'} direction={{ base: 'row' }} space={4}>
+          <TBox className="items-center">
             <TButton
               size={'20'}
               className="active:translate-y-1 active:opacity-90"
@@ -42,7 +42,7 @@ export const MainScreen = ({ navigation }: Props) => {
               <TImage className="active:bg-black active:bg-opacity-50" height={'40'} width={'24'} source={bookBtn} alt="learn" />
             </TButton>
           </TBox>
-          <TBox>
+          <TBox className="items-center">
             <TButton
               size={'20'}
               height={'40'}
