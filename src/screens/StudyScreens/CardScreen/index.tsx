@@ -65,13 +65,13 @@ export const StudyCardScreen = (props: Props) => {
           alt="image"
         />
         <Box>
-          <Box maxW="64" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" backgroundColor="gray.50">
+          <Box width={'64'} rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" backgroundColor="gray.50">
             <AspectRatio w="100%" />
             <Stack p="4" space={3}>
-              <Heading size="lg" fontWeight={'semibold'} ml="-1">
+              <Heading size="lg" fontWeight={'semibold'} ml="-1" adjustsFontSizeToFit={true} numberOfLines={1}>
                 {lesson[currentCard].id}
               </Heading>
-              <Heading size={'2xl'} fontWeight={'semibold'}>
+              <Heading size={'xl'} fontWeight={'semibold'} adjustsFontSizeToFit={true} numberOfLines={1}>
                 {lesson[currentCard].ar}
               </Heading>
             </Stack>
