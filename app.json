@@ -2,7 +2,7 @@
   "expo": {
     "name": "B-Mufar",
     "slug": "b-mufar",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -24,7 +24,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.lambdadelta.bmufar",
-      "runtimeVersion": "1..0"
+      "runtimeVersion": "1.1.1"
     },
     "web": {
       "favicon": "./assets/favicon.png"
