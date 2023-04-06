@@ -128,7 +128,7 @@ const WordBlockBank = ({ name, currentMoving, setPoint, setCurrentMoving }: Word
         setCurrentMoving('')
       }}>
       {/* <Text>{isCorrect ? 'true' : 'false'}</Text> */}
-      <Text numberOfLines={1} adjustsFontSizeToFit style={isVisible ? null : styles.hidden} fontSize={'18'} textAlign={'center'}>
+      <Text style={isVisible ? null : styles.hidden} fontSize={'18'} textAlign={'center'}>
         {currentName}
       </Text>
     </DraxView>
@@ -309,8 +309,7 @@ const styles = StyleSheet.create({
   centeredContent: {
     position: 'relative',
     justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center'
+    alignItems: 'center'
   },
   wordBlock: {
     width: 65,
