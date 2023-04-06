@@ -26,9 +26,11 @@ export const MainScreen = ({ navigation }: Props) => {
     <PageWrapper image={bgMain}>
       <TBox className="h-full w-full items-center pt-20">
         <TBox className="mb-6 items-center justify-center">
-          <TImage className="absolute top-36 left-64 animate-bounce" size={['24', '32', '40']} source={peopleMain} alt="people" />
-          <TImage className="mb-4 h-auto w-80 -rotate-6" source={textLogo} alt="logo" />
-          <TText className="text-base font-semibold text-yellow-600">Belajar Mufradat Bahasa Arab</TText>
+          <TImage className="absolute top-36 left-64 animate-bounce" size={['24', '24', '40']} source={peopleMain} alt="people" />
+          <TImage className="mb-4 h-auto -rotate-6" source={textLogo} width={['64', '64', '72']} alt="logo" />
+          <TText className="font-semibold text-yellow-600" fontSize={['xs', 'xs', 'md']}>
+            Belajar Mufradat Bahasa Arab
+          </TText>
         </TBox>
         <TStack className="items-center" alignItems={'center'} direction={{ base: 'row' }} space={4}>
           <TBox className="items-center">
@@ -37,12 +39,12 @@ export const MainScreen = ({ navigation }: Props) => {
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => navigation.navigate('StudyMenu')}
-              height={['24', '32', '40']}
-              width={'24'}>
+              height={['24', '24', '40']}
+              width={['16', '16', '24']}>
               <TImage
                 className="active:bg-black active:bg-opacity-50"
-                height={['24', '32', '40']}
-                width={'24'}
+                height={['24', '24', '40']}
+                width={['16', '16', '24']}
                 source={bookBtn}
                 alt="learn"
               />
@@ -51,12 +53,12 @@ export const MainScreen = ({ navigation }: Props) => {
           <TBox className="items-center">
             <TButton
               size={'20'}
-              height={['24', '32', '40']}
-              width={'24'}
+              height={['24', '24', '40']}
+              width={['16', '16', '24']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => navigation.navigate('GameSelect')}>
-              <TImage height={['24', '32', '40']} width={'24'} source={playBtn} alt="play" />
+              <TImage height={['24', '24', '40']} width={['16', '16', '24']} source={playBtn} alt="play" />
             </TButton>
           </TBox>
         </TStack>

@@ -1,4 +1,4 @@
-import { Center, Flex, Heading, Text, View } from 'native-base'
+import { Box, Center, Flex, Heading, Text, View } from 'native-base'
 import { styled } from 'nativewind'
 import React, { useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native'
@@ -29,6 +29,7 @@ interface MatchUpProps {
 
 const TCenter = styled(Center)
 const TView = styled(View)
+const TFlex = styled(Flex)
 const THeading = styled(Heading)
 
 const WordBlock = ({ name, setCurrentMoving, setCount }: Omit<WordBlockProps, 'currentMoving' | 'setPoint'>) => {
@@ -127,7 +128,7 @@ const WordBlockBank = ({ name, currentMoving, setPoint, setCurrentMoving }: Word
         setCurrentMoving('')
       }}>
       {/* <Text>{isCorrect ? 'true' : 'false'}</Text> */}
-      <Text style={isVisible ? null : styles.hidden} fontSize={'18'} textAlign={'center'}>
+      <Text numberOfLines={1} adjustsFontSizeToFit style={isVisible ? null : styles.hidden} fontSize={'18'} textAlign={'center'}>
         {currentName}
       </Text>
     </DraxView>
@@ -140,20 +141,22 @@ const Card = ({ material }: { material: LessonType }) => {
   return (
     <View
       style={[styles.card]}
-      width={['50', '75', '90']}
-      height={['75', '90', '105']}
+      width={['50px', '60px', '90px']}
+      height={['75px', '75px', '105px']}
       rounded="lg"
       overflow="hidden"
       borderColor="white"
       borderWidth="3"
+      alignContent={'center'}
+      alignSelf={'center'}
       backgroundColor="coolGray.50">
       <TCenter className="mt-1">
-        <Image style={[styles.image, { width: 50, height: 50 }]} PlaceholderContent={<ActivityIndicator />} source={img} alt="image" />
+        <Image style={[styles.image, { width: 40, height: 40 }]} PlaceholderContent={<ActivityIndicator />} source={img} alt="image" />
         <Text
-          marginTop={'3'}
+          marginTop={'2'}
           numberOfLines={1}
           adjustsFontSizeToFit={true}
-          fontSize={['10', '10', '12']}
+          fontSize={['9', '9', '12']}
           textAlign={'center'}
           fontWeight={'semibold'}>
           {id}
@@ -218,23 +221,23 @@ export const MatchUpBoard = (props: MatchUpProps) => {
   return (
     <DraxProvider>
       <View style={styles.container}>
-        <Flex flexDirection={'row'}>
+        <TFlex height={'10%'} flexDirection={'row'}>
           <THeading
             size={'md'}
-            fontSize={['md', 'md', 'lg']}
+            fontSize={['xs', 'xs', 'lg']}
             className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             Ronde {section}
           </THeading>
           <THeading
             size={'md'}
-            fontSize={['md', 'md', 'lg']}
+            fontSize={['xs', 'xs', 'lg']}
             className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
           </THeading>
           {/* <Text>{point}</Text>
           <Text>{count}</Text> */}
-        </Flex>
-        <View style={styles.paletteRow}>
+        </TFlex>
+        <View height={'80%'} style={styles.paletteRow}>
           <View style={styles.paletteCol}>
             {board.answer.slice(0, cardNumber).map(val => {
               return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} setCount={updateCounter} />
@@ -274,11 +277,11 @@ export const MatchUpBoard = (props: MatchUpProps) => {
               })}
             </View>
           </View>
-          <View style={styles.paletteCol}>
+          <TView style={styles.paletteCol}>
             {board.answer.slice(3).map(val => {
               return <WordBlock key={`c${val.id}`} name={val.ar} setCurrentMoving={setCurrentMoving} setCount={updateCounter} />
             })}
-          </View>
+          </TView>
         </View>
       </View>
     </DraxProvider>
@@ -306,7 +309,8 @@ const styles = StyleSheet.create({
   centeredContent: {
     position: 'relative',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    alignSelf: 'center'
   },
   wordBlock: {
     width: 65,

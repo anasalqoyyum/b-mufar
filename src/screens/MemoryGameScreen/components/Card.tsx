@@ -68,8 +68,8 @@ export const MemoryCard = (props: Props) => {
     <TButton bgColor={'none'} onPress={gameState.chosenCard.length === 2 || isDisabled ? null : openCard}>
       <FlipCard flip={isOpen} clickable={false} flipHorizontal={true} flipVertical={false}>
         <Box
-          width={['16', '24']}
-          height={['24', '32']}
+          width={['20', '20', '24']}
+          height={['24', '24', '32']}
           rounded="lg"
           overflow="hidden"
           borderColor="white"
@@ -77,8 +77,8 @@ export const MemoryCard = (props: Props) => {
           backgroundColor="darkBlue.400"
         />
         <Box
-          width={['16', '24']}
-          height={['24', '32']}
+          width={['20', '20', '24']}
+          height={['24', '24', '32']}
           rounded="lg"
           overflow="hidden"
           borderColor="white"
@@ -86,10 +86,16 @@ export const MemoryCard = (props: Props) => {
           backgroundColor="coolGray.50">
           <TCenter className="mt-1">
             <TImage className="z-10" size={['12', '12', '16']} source={img} alt="image" />
-            <Text textAlign={'center'} fontSize={['14', '14', '16']} fontWeight={'semibold'}>
+            <Text textAlign={'center'} numberOfLines={1} adjustsFontSizeToFit fontSize={['13', '13', '16']} fontWeight={'semibold'}>
               {ar}
             </Text>
-            <Text marginTop={'1'} textAlign={'center'} fontSize={['9', '9', '11']} fontWeight={'semibold'}>
+            <Text
+              marginTop={'1'}
+              textAlign={'center'}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              fontSize={['9', '9', '11']}
+              fontWeight={'semibold'}>
               {id}
             </Text>
           </TCenter>

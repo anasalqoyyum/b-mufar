@@ -180,13 +180,13 @@ export const MemoryGameScreen = (props: Props) => {
         <Flex flexDirection={'row'}>
           <THeading
             size={'md'}
-            fontSize={['md', 'md', 'lg']}
+            fontSize={['xs', 'xs', 'lg']}
             className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             Ronde {section}
           </THeading>
           <THeading
             size={'md'}
-            fontSize={['md', 'md', 'lg']}
+            fontSize={['xs', 'xs', 'lg']}
             className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
           </THeading>

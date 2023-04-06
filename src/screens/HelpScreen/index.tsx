@@ -36,20 +36,20 @@ export const HelpScreen = (props: Props) => {
           <TImage className="scale-[.90]" source={scrollHelp} alt="scroll" />
         </TBox>
         <TBox className="ml-4 w-1/2 items-center">
-          <TText className="mt-12 h-16" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+          <TText className="mt-10" bold size={'md'} height={['16', '16', '20']} fontSize={['xs', 'xs', 'sm']}>
             Media pembelajaran ini berisi materi kosakata bahasa Arab beserta game terkait materi. Pengguna dapat meng-klik tombol atau
             gambar yang tersedia di halaman aplikasi. Perhatikan fungsi tombol berikut:
           </TText>
-          <TText className="h-11 pt-1" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+          <TText className="pt-1" bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
             <TImage size={'7'} source={homeBtn} alt="homehelp" /> Menuju ke halaman menu utama
           </TText>
-          <TText className="h-11 pt-1" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+          <TText className="pt-1" bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
             <TImage size={'7'} source={arrowRight} alt="arrowRight" /> Menuju ke tampilan selanjutnya
           </TText>
-          <TText className="h-11 pt-1" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+          <TText className="pt-1" bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
             <TImage size={'7'} source={arrowLeft} alt="arrowLeft" /> Menuju ke tampilan sebelumnya
           </TText>
-          <TText className="h-11 pt-1" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+          <TText className="h-11 pt-1" bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
             <TImage size={'7'} source={music} alt="music" /> <TImage size={'7'} source={musicOn} alt="music" /> Mematikan/menghidupkan musik
             pengiring
           </TText>

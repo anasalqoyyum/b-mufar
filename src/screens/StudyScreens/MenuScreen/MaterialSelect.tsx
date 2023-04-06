@@ -32,16 +32,16 @@ export const MaterialSelectScreen = (props: Props) => {
           <TImage size={'sm'} source={title} width={['300', '350', '400']} height={50} alt="home" />
         </TBox>
         <TBox className="scale-[.9]">
-          <Flex width={'4/5'} flexDirection={'row'}>
+          <Flex flexDirection={'row'}>
             {Object.entries(material).map(([key, val]) => {
               return (
                 <TButton
                   key={key}
-                  size={['40', '40', '52']}
+                  size={['48', '48', '56']}
                   className="active:translate-y-1 active:opacity-90"
                   bgColor={'none'}
                   onPress={() => props.navigation.navigate('StudyCardScreen', { materialTheme: key as MaterialType })}>
-                  <Image size={['40', '40', '52']} source={val} alt="home" />
+                  <Image size={['48', '48', '56']} source={val} alt="home" />
                 </TButton>
               )
             })}
