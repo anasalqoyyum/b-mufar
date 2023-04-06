@@ -48,30 +48,42 @@ export const StudyCardScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />
         <TBox className="absolute right-2 top-4">
-          <TImage size={'sm'} source={getCurrentTitle(materialTheme)} width={200} height={125} alt="home" />
+          <TImage size={'sm'} source={getCurrentTitle(materialTheme)} width={['100', '150', '200']} height={[75, 100, 125]} alt="home" />
         </TBox>
         {currentCard !== 0 && (
           <TBox className="absolute left-28 top-36 z-10">
-            <TButton size={'16'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={prevCard}>
-              <TImage size={'16'} className="absolute" source={prevBtn} alt="next" />
+            <TButton size={['12', '12', '16']} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={prevCard}>
+              <TImage size={['12', '12', '16']} className="absolute" source={prevBtn} alt="next" />
             </TButton>
           </TBox>
         )}
         <TImage
           key={`${currentCard} ${lesson[currentCard].id}`}
           className="absolute top-16 z-10"
-          size={'40'}
+          size={['32', '32', '40']}
           source={lesson[currentCard].img}
           alt="image"
         />
         <Box>
-          <Box width={'64'} rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" backgroundColor="gray.50">
+          <Box
+            width={['48', '56', '64']}
+            rounded="lg"
+            overflow="hidden"
+            borderColor="coolGray.200"
+            borderWidth="1"
+            backgroundColor="gray.50">
             <AspectRatio w="100%" />
             <Stack p="4" space={3}>
-              <Heading size="lg" fontWeight={'semibold'} ml="-1" adjustsFontSizeToFit={true} numberOfLines={1}>
+              <Heading
+                size={'lg'}
+                fontSize={['md', 'md', 'lg']}
+                fontWeight={'semibold'}
+                ml="-1"
+                adjustsFontSizeToFit={true}
+                numberOfLines={1}>
                 {lesson[currentCard].id}
               </Heading>
-              <Heading size={'xl'} fontWeight={'semibold'} adjustsFontSizeToFit={true} numberOfLines={1}>
+              <Heading size={'xl'} fontSize={['lg', '2xl', '3xl']} fontWeight={'semibold'} adjustsFontSizeToFit={true} numberOfLines={1}>
                 {lesson[currentCard].ar}
               </Heading>
             </Stack>
@@ -80,8 +92,8 @@ export const StudyCardScreen = (props: Props) => {
         <SoundButton source={lesson[currentCard].sound} setStatus={setPlaying} />
         {currentCard !== maxCardLength && (
           <TBox className="absolute right-44 top-36 z-10">
-            <TButton size={'16'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={nextCard}>
-              <TImage size={'16'} className="absolute" source={nextBtn} alt="next" />
+            <TButton size={['12', '12', '16']} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={nextCard}>
+              <TImage size={['12', '12', '16']} className="absolute" source={nextBtn} alt="next" />
             </TButton>
           </TBox>
         )}

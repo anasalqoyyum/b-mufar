@@ -81,12 +81,12 @@ export const MusicButton = () => {
   return (
     <TBox className="absolute bottom-4 right-8">
       {status === 'idle' || status === 'playing' ? (
-        <TButton size={'16'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={PauseAudio}>
-          <Image key={status} size={'16'} source={musicOn} alt="music" />
+        <TButton size={['12', '12', '16']} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={PauseAudio}>
+          <Image key={status} size={['12', '12', '16']} source={musicOn} alt="music" />
         </TButton>
       ) : (
-        <TButton size={'16'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={PlayAudio}>
-          <Image key={status} size={'16'} source={musicOff} alt="music" />
+        <TButton size={['12', '12', '16']} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={PlayAudio}>
+          <Image key={status} size={['12', '12', '16']} source={musicOff} alt="music" />
         </TButton>
       )}
     </TBox>

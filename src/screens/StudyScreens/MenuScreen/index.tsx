@@ -32,53 +32,53 @@ export const StudyMenuScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.navigate('Main')} />
         <TBox>
-          <TImage size={'sm'} source={title} width={400} height={50} alt="home" />
+          <TImage size={'sm'} source={title} width={['300', '350', '400']} height={50} alt="home" />
         </TBox>
         <TBox className="scale-[.95]">
           <Flex flexDirection={'row'} marginBottom={2}>
             <TButton
-              size={'40'}
+              size={['32', '32', '40']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => props.navigation.navigate('MaterialSelect', { materialId: 1 })}>
-              <Image size={'40'} source={buttonMap['1Main']} alt="image" />
+              <Image size={['32', '32', '40']} source={buttonMap['1Main']} alt="image" />
             </TButton>
             <TButton
-              size={'40'}
+              size={['32', '32', '40']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => props.navigation.navigate('MaterialSelect', { materialId: 2 })}>
-              <Image size={'40'} source={buttonMap['2Main']} alt="image" />
+              <Image size={['32', '32', '40']} source={buttonMap['2Main']} alt="image" />
             </TButton>
             <TButton
-              size={'40'}
+              size={['32', '32', '40']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => props.navigation.navigate('MaterialSelect', { materialId: 3 })}>
-              <Image size={'40'} source={buttonMap['3Main']} alt="image" />
+              <Image size={['32', '32', '40']} source={buttonMap['3Main']} alt="image" />
             </TButton>
           </Flex>
           <Flex flexDirection={'row'}>
             <TButton
-              size={'40'}
+              size={['32', '32', '40']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => props.navigation.navigate('MaterialSelect', { materialId: 4 })}>
-              <Image size={'40'} source={buttonMap['4Main']} alt="image" />
+              <Image size={['32', '32', '40']} source={buttonMap['4Main']} alt="image" />
             </TButton>
             <TButton
-              size={'40'}
+              size={['32', '32', '40']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => props.navigation.navigate('MaterialSelect', { materialId: 5 })}>
-              <Image size={'40'} source={buttonMap['5Main']} alt="image" />
+              <Image size={['32', '32', '40']} source={buttonMap['5Main']} alt="image" />
             </TButton>
             <TButton
-              size={'40'}
+              size={['32', '32', '40']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => props.navigation.navigate('MaterialSelect', { materialId: 6 })}>
-              <Image size={'40'} source={buttonMap['6Main']} alt="image" />
+              <Image size={['32', '32', '40']} source={buttonMap['6Main']} alt="image" />
             </TButton>
           </Flex>
         </TBox>

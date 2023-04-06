@@ -29,7 +29,7 @@ export const MaterialSelectScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.navigate('StudyMenu')} />
         <TBox>
-          <TImage size={'sm'} source={title} width={400} height={50} alt="home" />
+          <TImage size={'sm'} source={title} width={['300', '350', '400']} height={50} alt="home" />
         </TBox>
         <TBox className="scale-[.9]">
           <Flex width={'4/5'} flexDirection={'row'}>
@@ -37,11 +37,11 @@ export const MaterialSelectScreen = (props: Props) => {
               return (
                 <TButton
                   key={key}
-                  size={'56'}
+                  size={['40', '40', '52']}
                   className="active:translate-y-1 active:opacity-90"
                   bgColor={'none'}
                   onPress={() => props.navigation.navigate('StudyCardScreen', { materialTheme: key as MaterialType })}>
-                  <Image size={'56'} source={val} alt="home" />
+                  <Image size={['40', '40', '52']} source={val} alt="home" />
                 </TButton>
               )
             })}

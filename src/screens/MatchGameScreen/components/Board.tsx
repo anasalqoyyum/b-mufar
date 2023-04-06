@@ -138,10 +138,24 @@ const Card = ({ material }: { material: LessonType }) => {
   const { img, id } = material
 
   return (
-    <View style={[styles.card]} rounded="lg" overflow="hidden" borderColor="white" borderWidth="3" backgroundColor="coolGray.50">
+    <View
+      style={[styles.card]}
+      width={['50', '75', '90']}
+      height={['75', '90', '105']}
+      rounded="lg"
+      overflow="hidden"
+      borderColor="white"
+      borderWidth="3"
+      backgroundColor="coolGray.50">
       <TCenter className="mt-1">
         <Image style={[styles.image, { width: 50, height: 50 }]} PlaceholderContent={<ActivityIndicator />} source={img} alt="image" />
-        <Text marginTop={'3'} fontSize={'12'} textAlign={'center'} fontWeight={'semibold'}>
+        <Text
+          marginTop={'3'}
+          numberOfLines={1}
+          adjustsFontSizeToFit={true}
+          fontSize={['10', '10', '12']}
+          textAlign={'center'}
+          fontWeight={'semibold'}>
           {id}
         </Text>
       </TCenter>
@@ -205,10 +219,16 @@ export const MatchUpBoard = (props: MatchUpProps) => {
     <DraxProvider>
       <View style={styles.container}>
         <Flex flexDirection={'row'}>
-          <THeading size={'md'} className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+          <THeading
+            size={'md'}
+            fontSize={['md', 'md', 'lg']}
+            className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             Ronde {section}
           </THeading>
-          <THeading size={'md'} className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+          <THeading
+            size={'md'}
+            fontSize={['md', 'md', 'lg']}
+            className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
           </THeading>
           {/* <Text>{point}</Text>
@@ -298,8 +318,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fcbf85'
   },
   wordBlockBank: {
-    width: 70,
-    height: 32,
+    width: 65,
+    height: 30,
     borderRadius: 6,
     borderColor: '#f6a21d',
     marginHorizontal: 8,
@@ -307,8 +327,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#efefef'
   },
   card: {
-    width: 90,
-    height: 105,
     marginBottom: 15
   },
   palette: {

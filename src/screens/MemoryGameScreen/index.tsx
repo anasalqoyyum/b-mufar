@@ -178,18 +178,24 @@ export const MemoryGameScreen = (props: Props) => {
     <PageWrapper image={getBg()}>
       <TBox className="h-full w-full items-center pt-5">
         <Flex flexDirection={'row'}>
-          <THeading size={'md'} className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+          <THeading
+            size={'md'}
+            fontSize={['md', 'md', 'lg']}
+            className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             Ronde {section}
           </THeading>
-          <THeading size={'md'} className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+          <THeading
+            size={'md'}
+            fontSize={['md', 'md', 'lg']}
+            className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
           </THeading>
         </Flex>
         {isWin && <Winning navigation={props.navigation} />}
         <TBox className="absolute top-4 right-8 z-10">
-          <Image zIndex={10} size={'16'} source={timer} alt="home" />
+          <Image zIndex={10} size={['12', '12', '16']} source={timer} alt="home" />
           <TBox className="absolute inset-0 z-10 items-center justify-center">
-            <TText>{formatTime}</TText>
+            <TText fontSize={['xs', 'xs', 'md']}>{formatTime}</TText>
           </TBox>
         </TBox>
         <HomeButton onPress={() => props.navigation.navigate('Main')} />

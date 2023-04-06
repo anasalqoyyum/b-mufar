@@ -35,7 +35,7 @@ export const Winning = (props: Props) => {
   return (
     <TBox className="absolute top-6 z-30 items-center">
       <Image size={'md'} source={getImage()} width={350} height={350} alt="home" />
-      {props.score && (
+      {(props.score || props.score === 0) && (
         <TBox className="z-100 absolute bottom-6">
           <Flex flexDirection={'row'}>
             <THeading size={'md'} className="mx-2 rounded-md border border-[#f6a21d] bg-[#f5e5b5] py-2 px-4 text-gray-900">

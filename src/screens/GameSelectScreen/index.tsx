@@ -25,23 +25,23 @@ export const GameSelectScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.navigate('Main')} />
         <TBox>
-          <TImage size={'sm'} source={title} width={400} height={50} alt="home" />
+          <TImage size={'sm'} source={title} width={['300', '350', '400']} height={50} alt="home" />
         </TBox>
         <TBox className="mt-5 scale-[.9]">
           <Flex width={'4/5'} flexDirection={'row'}>
             <TButton
-              size={'56'}
+              size={['40', '40', '56']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => props.navigation.navigate('LevelSelect', { gameType: 'memory' })}>
-              <Image size={'56'} source={iconMemory} alt="home" />
+              <Image size={['40', '40', '56']} source={iconMemory} alt="home" />
             </TButton>
             <TButton
-              size={'56'}
+              size={['40', '40', '56']}
               className="active:translate-y-1 active:opacity-90"
               bgColor={'none'}
               onPress={() => props.navigation.navigate('LevelSelect', { gameType: 'match' })}>
-              <Image size={'56'} source={iconMatchup} alt="home" />
+              <Image size={['40', '40', '56']} source={iconMatchup} alt="home" />
             </TButton>
           </Flex>
         </TBox>

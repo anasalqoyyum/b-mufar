@@ -30,27 +30,27 @@ export const HelpScreen = (props: Props) => {
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.navigate('Main')} />
         <TBox>
-          <TImage size={'sm'} source={title} width={400} height={60} alt="home" />
+          <TImage size={'sm'} source={title} width={['300', '350', '400']} height={60} alt="home" />
         </TBox>
         <TBox className="absolute">
           <TImage className="scale-[.90]" source={scrollHelp} alt="scroll" />
         </TBox>
-        <TBox className="w-1/2 items-center">
-          <TText className="mt-14 h-16" bold size={'md'}>
+        <TBox className="ml-4 w-1/2 items-center">
+          <TText className="mt-12 h-16" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
             Media pembelajaran ini berisi materi kosakata bahasa Arab beserta game terkait materi. Pengguna dapat meng-klik tombol atau
             gambar yang tersedia di halaman aplikasi. Perhatikan fungsi tombol berikut:
           </TText>
-          <TText className="h-11 pt-1" bold size={'md'}>
-            <TImage size={'8'} source={homeBtn} alt="homehelp" /> Menuju ke halaman menu utama
+          <TText className="h-11 pt-1" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+            <TImage size={'7'} source={homeBtn} alt="homehelp" /> Menuju ke halaman menu utama
           </TText>
-          <TText className="h-11 pt-1" bold size={'md'}>
-            <TImage size={'8'} source={arrowRight} alt="arrowRight" /> Menuju ke tampilan selanjutnya
+          <TText className="h-11 pt-1" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+            <TImage size={'7'} source={arrowRight} alt="arrowRight" /> Menuju ke tampilan selanjutnya
           </TText>
-          <TText className="h-11 pt-1" bold size={'md'}>
-            <TImage size={'8'} source={arrowLeft} alt="arrowLeft" /> Menuju ke tampilan sebelumnya
+          <TText className="h-11 pt-1" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+            <TImage size={'7'} source={arrowLeft} alt="arrowLeft" /> Menuju ke tampilan sebelumnya
           </TText>
-          <TText className="h-11 pt-1" bold size={'md'}>
-            <TImage size={'8'} source={music} alt="music" /> <TImage size={'8'} source={musicOn} alt="music" /> Mematikan/menghidupkan musik
+          <TText className="h-11 pt-1" bold size={'md'} fontSize={['xs', 'xs', 'sm']}>
+            <TImage size={'7'} source={music} alt="music" /> <TImage size={'7'} source={musicOn} alt="music" /> Mematikan/menghidupkan musik
             pengiring
           </TText>
         </TBox>

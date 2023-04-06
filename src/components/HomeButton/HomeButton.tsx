@@ -14,8 +14,8 @@ const homeBtn = require('../../../assets/icon/home-btn.png')
 export const HomeButton = (props: Props) => {
   return (
     <TBox className="absolute top-4 left-8 z-10">
-      <TButton size={'16'} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={props.onPress}>
-        <Image size={'16'} source={homeBtn} alt="home" />
+      <TButton size={['12', '12', '16']} className="active:translate-y-1 active:opacity-90" bgColor={'none'} onPress={props.onPress}>
+        <Image size={['12', '12', '16']} source={homeBtn} alt="home" />
       </TButton>
     </TBox>
   )
