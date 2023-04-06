@@ -116,19 +116,21 @@ export const MatchGameScreen = (props: Props) => {
     if (materialId === 1 || materialId === 2 || materialId === 3) {
       if (point <= 2) {
         return 121
-      } else if (point < 2 && point <= 4) {
+      } else if (point > 2 && point <= 4) {
         return 61
-      } else if (point > 4) {
+      } else {
         return 1
       }
     } else if (materialId === 4 || materialId === 5 || materialId === 6) {
       if (point <= 3) {
         return 121
-      } else if (point < 3 && point <= 7) {
+      } else if (point > 3 && point <= 7) {
         return 61
-      } else if (point > 7) {
+      } else {
         return 1
       }
+    } else {
+      return 1
     }
   }
 

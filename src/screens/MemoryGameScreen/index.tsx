@@ -191,7 +191,7 @@ export const MemoryGameScreen = (props: Props) => {
             الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
           </THeading>
         </Flex>
-        {isWin && <Winning navigation={props.navigation} />}
+        {isWin && <Winning time={time} navigation={props.navigation} />}
         <TBox className="absolute top-4 right-8 z-10">
           <Image zIndex={10} size={['12', '12', '16']} source={timer} alt="home" />
           <TBox className="absolute inset-0 z-10 items-center justify-center">

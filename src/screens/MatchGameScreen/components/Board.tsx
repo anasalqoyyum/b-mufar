@@ -52,7 +52,7 @@ const WordBlock = ({ name, setCurrentMoving, setCount }: Omit<WordBlockProps, 'c
         setCurrentMoving('')
       }}
       dragPayload={{ text: name, setIsVisible }}>
-      <Text fontSize={'18'} textAlign={'center'}>
+      <Text numberOfLines={1} adjustsFontSizeToFit fontSize={'16'} textAlign={'center'}>
         {name}
       </Text>
     </DraxView>
@@ -128,7 +128,7 @@ const WordBlockBank = ({ name, currentMoving, setPoint, setCurrentMoving }: Word
         setCurrentMoving('')
       }}>
       {/* <Text>{isCorrect ? 'true' : 'false'}</Text> */}
-      <Text style={isVisible ? null : styles.hidden} fontSize={'18'} textAlign={'center'}>
+      <Text numberOfLines={1} adjustsFontSizeToFit style={isVisible ? null : styles.hidden} fontSize={'16'} textAlign={'center'}>
         {currentName}
       </Text>
     </DraxView>
@@ -221,22 +221,24 @@ export const MatchUpBoard = (props: MatchUpProps) => {
   return (
     <DraxProvider>
       <View style={styles.container}>
-        <TFlex height={'10%'} flexDirection={'row'}>
-          <THeading
-            size={'md'}
-            fontSize={['xs', 'xs', 'lg']}
-            className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
-            Ronde {section}
-          </THeading>
-          <THeading
-            size={'md'}
-            fontSize={['xs', 'xs', 'lg']}
-            className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
-            الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
-          </THeading>
-          {/* <Text>{point}</Text>
-          <Text>{count}</Text> */}
-        </TFlex>
+        {totalRound !== 1 && (
+          <TFlex height={'8%'} flexDirection={'row'}>
+            <THeading
+              size={'sm'}
+              fontSize={['2xs', '2xs', 'sm']}
+              className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+              Ronde {section}
+            </THeading>
+            <THeading
+              size={'sm'}
+              fontSize={['2xs', '2xs', 'sm']}
+              className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+              الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
+            </THeading>
+            {/* <Text>{point}</Text>
+        <Text>{count}</Text> */}
+          </TFlex>
+        )}
         <View height={'80%'} style={styles.paletteRow}>
           <View style={styles.paletteCol}>
             {board.answer.slice(0, cardNumber).map(val => {

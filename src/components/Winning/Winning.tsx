@@ -4,7 +4,7 @@ import React from 'react'
 
 type Props = {
   navigation: any
-  time?: number
+  time: number
   isScore?: boolean
   score?: number
 }
@@ -20,7 +20,7 @@ const homeBtn = require('../../../assets/icon/home-btn.png')
 const backBtn = require('../../../assets/icon/arrow-left.png')
 
 export const Winning = (props: Props) => {
-  const { time = 0 } = props
+  const { time } = props
 
   const getImage = () => {
     if (time <= 60) {
