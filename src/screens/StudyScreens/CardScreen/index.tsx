@@ -83,7 +83,12 @@ export const StudyCardScreen = (props: Props) => {
                 numberOfLines={1}>
                 {lesson[currentCard].id}
               </Heading>
-              <Heading size={'xl'} fontSize={['lg', '2xl', '3xl']} fontWeight={'semibold'} adjustsFontSizeToFit={true} numberOfLines={1}>
+              <Heading
+                fontFamily={'Traditional Arabic'}
+                size={'xl'}
+                fontSize={['lg', '3xl', '4xl']}
+                adjustsFontSizeToFit={true}
+                numberOfLines={1}>
                 {lesson[currentCard].ar}
               </Heading>
             </Stack>

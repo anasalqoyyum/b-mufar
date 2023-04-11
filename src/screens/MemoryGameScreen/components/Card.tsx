@@ -86,7 +86,12 @@ export const MemoryCard = (props: Props) => {
           backgroundColor="coolGray.50">
           <TCenter className="mt-1">
             <TImage className="z-10" size={['12', '12', '16']} source={img} alt="image" />
-            <Text textAlign={'center'} numberOfLines={1} adjustsFontSizeToFit fontSize={['13', '13', '16']} fontWeight={'semibold'}>
+            <Text
+              fontFamily={'Traditional Arabic'}
+              textAlign={'center'}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              fontSize={['13', '13', '16']}>
               {ar}
             </Text>
             <Text

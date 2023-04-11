@@ -14,6 +14,7 @@ import { GameSelectScreen } from '../screens/GameSelectScreen'
 import { LevelSelectScreen } from '../screens/LevelSelectScreen'
 import { MaterialId } from '../constants/Models/Lesson'
 import { MatchGameScreen } from '../screens/MatchGameScreen'
+import { GameHelpScreen } from '../screens/GameHelpScreen'
 
 type GameParams = {
   materialId: MaterialId
@@ -29,16 +30,18 @@ export type RootStackParamList = {
   MatchGame: GameParams
   GameSelect: undefined
   LevelSelect: { gameType: 'memory' | 'match' }
+  GameHelp: undefined
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
-export const Navigator = () => {
+export const Navigator = ({ onReady }: { onReady: () => Promise<void> }) => {
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={onReady}>
       <Stack.Navigator initialRouteName="Main" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Help" component={HelpScreen} />
+        <Stack.Screen name="GameHelp" component={GameHelpScreen} />
         <Stack.Screen name="StudyMenu" component={StudyMenuScreen} />
         <Stack.Screen name="MaterialSelect" component={MaterialSelectScreen} />
         <Stack.Screen name="GameSelect" component={GameSelectScreen} />

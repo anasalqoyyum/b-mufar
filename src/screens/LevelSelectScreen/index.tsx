@@ -15,6 +15,8 @@ const TImage = styled(Image)
 
 const bgMain = require('../../../assets/background/bg-random.png')
 const title = require('../../../assets/title/levels.png')
+const gameTitleMemory = require('../../../assets/title/memoryTitle.png')
+const gameTitleMatch = require('../../../assets/title/matchTitle.png')
 
 const buttonMap = {
   '1Main': require('../../../assets/icon/lvl1.png'),
@@ -34,6 +36,15 @@ export const LevelSelectScreen = (props: Props) => {
       <TBox className="h-full w-full items-center justify-center">
         <HomeButton onPress={() => props.navigation.navigate('Main')} />
         <BackButton onPress={() => props.navigation.goBack()} />
+        <TBox className="absolute right-3 top-3">
+          <TImage
+            size={'sm'}
+            source={gameType === 'memory' ? gameTitleMemory : gameTitleMatch}
+            width={['100', '150', '200']}
+            height={[75, 100, 125]}
+            alt="home"
+          />
+        </TBox>
         <TBox>
           <TImage size={'sm'} source={title} width={['300', '350', '400']} height={50} alt="home" />
         </TBox>
