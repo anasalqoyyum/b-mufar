@@ -31,7 +31,7 @@ export const MaterialSelectScreen = (props: Props) => {
         <TBox>
           <TImage size={'sm'} source={title} width={['300', '350', '400']} height={50} alt="home" />
         </TBox>
-        <TBox className="scale-[.9]">
+        <TBox className="mt-8 scale-[.8]">
           <Flex flexDirection={'row'}>
             {Object.entries(material).map(([key, val]) => {
               return (

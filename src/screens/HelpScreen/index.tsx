@@ -36,7 +36,7 @@ export const HelpScreen = (props: Props) => {
           <TImage className="scale-[.90]" source={scrollHelp} alt="scroll" />
         </TBox>
         <TBox className="ml-4 w-1/2 items-center">
-          <TText className="mt-10" bold size={'md'} height={['16', '16', '20']} fontSize={['xs', 'xs', 'sm']}>
+          <TText className="mt-16" bold size={'md'} height={['16', '16', '20']} fontSize={['xs', 'xs', 'sm']}>
             Media pembelajaran ini berisi materi kosakata bahasa Arab beserta game terkait materi. Pengguna dapat meng-klik tombol atau
             gambar yang tersedia di halaman aplikasi. Perhatikan fungsi tombol berikut:
           </TText>

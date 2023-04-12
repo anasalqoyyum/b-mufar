@@ -76,7 +76,7 @@ export const StudyCardScreen = (props: Props) => {
             <Stack p="4" space={3}>
               <Heading
                 size={'lg'}
-                fontSize={['md', 'md', 'lg']}
+                fontSize={['xl', 'xl', '2xl']}
                 fontWeight={'semibold'}
                 ml="-1"
                 adjustsFontSizeToFit={true}
