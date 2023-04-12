@@ -53,7 +53,7 @@ const WordBlock = ({ name, setCurrentMoving, setCount }: Omit<WordBlockProps, 'c
         setCurrentMoving('')
       }}
       dragPayload={{ text: name, setIsVisible }}>
-      <Text fontFamily={'Traditional Arabic Bold'} numberOfLines={1} adjustsFontSizeToFit fontSize={'17'} textAlign={'center'}>
+      <Text fontFamily={'Traditional Arabic Bold'} numberOfLines={1} adjustsFontSizeToFit fontSize={'2xl'} textAlign={'center'}>
         {name}
       </Text>
     </DraxView>
@@ -134,7 +134,7 @@ const WordBlockBank = ({ name, currentMoving, setPoint, setCurrentMoving }: Word
         numberOfLines={1}
         adjustsFontSizeToFit
         style={isVisible ? null : styles.hidden}
-        fontSize={'17'}
+        fontSize={'2xl'}
         textAlign={'center'}>
         {currentName}
       </Text>
@@ -321,8 +321,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   wordBlock: {
-    width: 65,
-    height: 30,
+    width: 75,
+    height: 40,
     borderRadius: 6,
     borderColor: '#f6a21d',
     marginHorizontal: 8,
@@ -330,8 +330,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fcbf85'
   },
   wordBlockBank: {
-    width: 65,
-    height: 30,
+    width: 75,
+    height: 40,
     borderRadius: 6,
     borderColor: '#f6a21d',
     marginHorizontal: 8,

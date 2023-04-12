@@ -69,7 +69,7 @@ export const MemoryCard = (props: Props) => {
       <FlipCard flip={isOpen} clickable={false} flipHorizontal={true} flipVertical={false}>
         <Box
           width={['20', '20', '24']}
-          height={['110px', '110px', '32']}
+          height={['120px', '120px', '32']}
           rounded="lg"
           overflow="hidden"
           borderColor="white"
@@ -78,7 +78,7 @@ export const MemoryCard = (props: Props) => {
         />
         <Box
           width={['20', '20', '24']}
-          height={['110px', '110px', '32']}
+          height={['120px', '120px', '32']}
           rounded="lg"
           overflow="hidden"
           borderColor="white"
@@ -92,7 +92,7 @@ export const MemoryCard = (props: Props) => {
               textAlign={'center'}
               numberOfLines={1}
               adjustsFontSizeToFit
-              fontSize={['18']}>
+              fontSize={['2xl']}>
               {ar}
             </Text>
             <Text textAlign={'center'} numberOfLines={1} adjustsFontSizeToFit fontSize={['9', '9', '11']} fontWeight={'semibold'}>
