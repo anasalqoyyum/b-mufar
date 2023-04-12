@@ -23,7 +23,7 @@ const nextBtn = require('../../../assets/icon/arrow-right.png')
 const MemoryGameHelp = () => {
   return (
     <TBox className="ml-4 w-1/2 items-center">
-      <TText className="mt-16 mb-2" bold size={'md'} height={['20', '20', '24']} fontSize={'md'}>
+      <TText className="mt-16 mb-2" bold size={'md'} height={['20', '20', '20']} fontSize={'md'}>
         <Text fontWeight={'900'}>Memory Game</Text> dimainkan dengan cara membuka kartu mufrodat yang tertutup dan memasangkannya dengan
         kartu yang sama
       </TText>
