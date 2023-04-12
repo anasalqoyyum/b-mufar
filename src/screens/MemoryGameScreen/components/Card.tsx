@@ -69,7 +69,7 @@ export const MemoryCard = (props: Props) => {
       <FlipCard flip={isOpen} clickable={false} flipHorizontal={true} flipVertical={false}>
         <Box
           width={['20', '20', '24']}
-          height={['120px', '120px', '32']}
+          height={['120px', '120px', '135px']}
           rounded="lg"
           overflow="hidden"
           borderColor="white"
@@ -78,7 +78,7 @@ export const MemoryCard = (props: Props) => {
         />
         <Box
           width={['20', '20', '24']}
-          height={['120px', '120px', '32']}
+          height={['120px', '120px', '135px']}
           rounded="lg"
           overflow="hidden"
           borderColor="white"

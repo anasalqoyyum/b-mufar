@@ -42,7 +42,7 @@ export const LevelSelectScreen = (props: Props) => {
           <TImage size={['24', '24', '32']} source={gameType === 'memory' ? iconMemory : iconMatchup} alt="home" />
         </TBox>
         <TBox>
-          <TImage size={'sm'} source={title} width={['300', '350', '400']} height={45} alt="home" />
+          <TImage size={'sm'} source={title} width={['300', '350', '400']} height={50} alt="home" />
         </TBox>
         <TBox className="scale-[.9]">
           <Flex flexDirection={'row'}>
