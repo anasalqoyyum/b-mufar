@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { AspectRatio, Box, Button, Heading, Image, Stack } from 'native-base'
+import { AspectRatio, Box, Button, Heading, Image, Stack, Text } from 'native-base'
 import { styled } from 'nativewind'
 import React, { useState } from 'react'
 import { BackButton } from '../../../components/HomeButton/BackButton'
@@ -83,14 +83,9 @@ export const StudyCardScreen = (props: Props) => {
                 numberOfLines={1}>
                 {lesson[currentCard].id}
               </Heading>
-              <Heading
-                fontFamily={'Traditional Arabic'}
-                size={'xl'}
-                fontSize={['lg', '3xl', '4xl']}
-                adjustsFontSizeToFit={true}
-                numberOfLines={1}>
+              <Text fontFamily={'Traditional Arabic Bold'} fontSize={['3xl', '4xl', '5xl']} adjustsFontSizeToFit={true} numberOfLines={1}>
                 {lesson[currentCard].ar}
-              </Heading>
+              </Text>
             </Stack>
           </Box>
         </Box>

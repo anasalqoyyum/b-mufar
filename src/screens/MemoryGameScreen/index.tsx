@@ -181,15 +181,15 @@ export const MemoryGameScreen = (props: Props) => {
           <THeading
             size={'md'}
             fontSize={['xs', 'xs', 'lg']}
-            className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+            className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
             Ronde {section}
           </THeading>
-          <THeading
-            size={'md'}
-            fontSize={['xs', 'xs', 'lg']}
-            className="mx-2 mb-4 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-2 px-4 text-gray-900">
+          <TText
+            fontSize={['md', 'md', 'lg']}
+            fontFamily={'Traditional Arabic Bold'}
+            className="mx-2 rounded-md border border-[#f6a21d] bg-[#fcbf85] py-1 px-4 text-gray-900">
             الجَوْلَةُ {section === 1 ? 'الْأُوْلَى' : 'الثَّانِيَةُ'}
-          </THeading>
+          </TText>
         </Flex>
         {isWin && <Winning time={time} navigation={props.navigation} />}
         <TBox className="absolute top-4 right-8 z-10">

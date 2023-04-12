@@ -23,20 +23,20 @@ const nextBtn = require('../../../assets/icon/arrow-right.png')
 const MemoryGameHelp = () => {
   return (
     <TBox className="ml-4 w-1/2 items-center">
-      <TText className="mt-16" bold size={'md'} height={['12', '12', '16']} fontSize={['xs', 'xs', 'sm']}>
+      <TText className="mt-16 mb-2" bold size={'md'} height={['12', '12', '16']} fontSize={'md'}>
         <Text fontWeight={'900'}>Memory Game</Text> dimainkan dengan cara membuka kartu mufrodat yang tertutup dan memasangkannya dengan
         kartu yang sama
       </TText>
-      <TText bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
+      <TText bold size={'md'} height={['8', '8', '10']} fontSize={'md'}>
         <Text fontWeight={'900'}>Teknis Penilaian</Text> (sesuai durasi waktu bermain):
       </TText>
-      <TText bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
+      <TText bold size={'md'} height={['8', '8', '10']} fontSize={'md'}>
         Bintang 3 = 1 menit
       </TText>
-      <TText bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
+      <TText bold size={'md'} height={['8', '8', '10']} fontSize={'md'}>
         Bintang 2 = 2 menit
       </TText>
-      <TText bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
+      <TText bold size={'md'} height={['8', '8', '10']} fontSize={'md'}>
         Bintang 1 = 3 menit/lebih
       </TText>
     </TBox>
@@ -46,17 +46,17 @@ const MemoryGameHelp = () => {
 const MatchHelp = () => {
   return (
     <TBox className="ml-4 w-1/2 items-center">
-      <TText className="mt-16" bold size={'md'} height={['12', '12', '16']} fontSize={['xs', 'xs', 'sm']}>
+      <TText className="mt-16 mb-2" bold size={'md'} height={['20', '20', '20']} fontSize={'md'}>
         <Text fontWeight={'900'}>Match Up Game</Text> permainan mencocokkan kosakata bahasa Arab yang dimainkan dengan cara memindahkan kata
         Arab pada kolom kartu yang tersedia
       </TText>
-      <TText bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
+      <TText bold size={'md'} height={['8', '8', '10']} fontSize={'md'}>
         <Text fontWeight={'900'}>Teknis Penilaian</Text> (sesuai skor benar):
       </TText>
-      <TText bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
+      <TText bold size={'md'} height={['12', '12', '12']} fontSize={'md'}>
         Level 1-3: Bintang 1 (skor 1-2), Bintang 2 (skor 3-4), Bintang 3 (skor 5-6)
       </TText>
-      <TText bold size={'md'} height={['8', '8', '10']} fontSize={['xs', 'xs', 'sm']}>
+      <TText bold size={'md'} height={['12', '12', '12']} fontSize={'md'}>
         Level 4-6: Bintang 1 (skor 1-3), Bintang 2 (skor 4-7), Bintang 3 (skor 8-10)
       </TText>
     </TBox>

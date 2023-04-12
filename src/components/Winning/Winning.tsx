@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Image } from 'native-base'
+import { Box, Button, Flex, Heading, Image, Text } from 'native-base'
 import { styled } from 'nativewind'
 import React from 'react'
 
@@ -12,6 +12,7 @@ type Props = {
 const TBox = styled(Box)
 const TButton = styled(Button)
 const THeading = styled(Heading)
+const TText = styled(Text)
 
 const oneStar = require('../../../assets/icon/1star.png')
 const twoStar = require('../../../assets/icon/2star.png')
@@ -44,12 +45,12 @@ export const Winning = (props: Props) => {
               className="mx-2 rounded-md border border-[#f6a21d] bg-[#f5e5b5] py-2 px-4 text-gray-900">
               Skor : {props.score}
             </THeading>
-            <THeading
-              size={'md'}
-              fontSize={['xs', 'xs', 'lg']}
-              className="mx-2 rounded-md border border-[#f6a21d] bg-[#f5e5b5] py-2 px-4 text-gray-900">
+            <TText
+              fontFamily={'Traditional Arabic Bold'}
+              fontSize={['md', 'md', 'lg']}
+              className="mx-2 rounded-md border border-[#f6a21d] bg-[#f5e5b5] py-1 px-4 text-gray-900">
               نَتِيْجَةٌ : {props.score?.toLocaleString('ar')}
-            </THeading>
+            </TText>
           </Flex>
         </TBox>
       )}

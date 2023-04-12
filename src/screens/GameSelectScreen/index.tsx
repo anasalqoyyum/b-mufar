@@ -37,7 +37,7 @@ export const GameSelectScreen = (props: Props) => {
         <TBox>
           <TImage size={'sm'} source={title} width={['300', '350', '400']} height={50} alt="home" />
         </TBox>
-        <TBox className="mt-8 scale-[.85]">
+        <TBox className="mt-8 scale-[.7]">
           <Flex width={'4/5'} flexDirection={'row'}>
             <TButton
               size={['40', '40', '56']}
