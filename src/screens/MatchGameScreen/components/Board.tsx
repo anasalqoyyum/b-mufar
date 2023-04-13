@@ -156,6 +156,7 @@ const Card = ({ material }: { material: LessonType }) => {
       borderWidth="3"
       alignContent={'center'}
       alignSelf={'center'}
+      justifyContent={'center'}
       backgroundColor="coolGray.50">
       <TCenter className="mt-1">
         <Image style={[styles.image, { width: 40, height: 40 }]} PlaceholderContent={<ActivityIndicator />} source={img} alt="image" />
