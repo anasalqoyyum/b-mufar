@@ -172,8 +172,8 @@ export const IsiRuangan: LessonType[] = [
   {
     ar: 'مِلْعَقَةٌ',
     id: 'Sendok',
-    img: require('../../../../../assets/lesson/5-2/292-sendok.png'),
-    sound: require('../../../../../assets/lesson/5-2/292-sendok.mp3')
+    img: require('../../../../../assets/lesson/5-2/295-sendok.jpg'),
+    sound: require('../../../../../assets/lesson/5-2/295-sendok.mp3')
   },
   {
     ar: 'شَوْكَةٌ',
