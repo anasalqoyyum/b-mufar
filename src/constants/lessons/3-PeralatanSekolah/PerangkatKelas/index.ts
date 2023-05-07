@@ -68,8 +68,8 @@ export const PerangkatKelas: LessonType[] = [
     sound: require('../../../../../assets/lesson/3-2/11-kapurtulis.mp3')
   },
   {
-    ar: 'مِنْضَدَةٌ',
-    id: 'Meja',
+    ar: 'مَكْتَبٌ',
+    id: 'Meja Tulis',
     img: require('../../../../../assets/lesson/3-2/12-meja.png'),
     sound: require('../../../../../assets/lesson/3-2/12-meja.mp3')
   },
@@ -140,7 +140,7 @@ export const PerangkatKelas: LessonType[] = [
     sound: require('../../../../../assets/lesson/3-2/23-jadwalpelajaran.mp3')
   },
   {
-    ar: 'كُرَّةٌ رَاضِيَّةٌ',
+    ar: 'كُرَّةٌ أَرْضِيَّةٌ',
     id: 'Globe',
     img: require('../../../../../assets/lesson/3-2/24-globe.png'),
     sound: require('../../../../../assets/lesson/3-2/24-globe.mp3')

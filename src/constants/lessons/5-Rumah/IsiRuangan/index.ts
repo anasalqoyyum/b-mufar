@@ -92,7 +92,7 @@ export const IsiRuangan: LessonType[] = [
     sound: require('../../../../../assets/lesson/5-2/15-gambarr.mp3')
   },
   {
-    ar: 'مَكْتَبٌ',
+    ar: 'مِنْضَدَةٌ',
     id: 'Meja',
     img: require('../../../../../assets/lesson/5-2/16-meja.png'),
     sound: require('../../../../../assets/lesson/5-2/16-mejaa.mp3')
@@ -171,6 +171,12 @@ export const IsiRuangan: LessonType[] = [
   },
   {
     ar: 'مِلْعَقَةٌ',
+    id: 'Sendok',
+    img: require('../../../../../assets/lesson/5-2/292-sendok.png'),
+    sound: require('../../../../../assets/lesson/5-2/292-sendok.mp3')
+  },
+  {
+    ar: 'شَوْكَةٌ',
     id: 'Garpu',
     img: require('../../../../../assets/lesson/5-2/29-garpu.png'),
     sound: require('../../../../../assets/lesson/5-2/29-garpu.mp3')
