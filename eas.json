@@ -6,27 +6,35 @@
     "development": {
       "distribution": "internal",
       "android": {
-        "gradleCommand": ":app:assembleDebug"
+        "gradleCommand": ":app:assembleDebug",
+        "image": "latest"
       },
       "ios": {
         "buildConfiguration": "Debug",
-        "resourceClass": "m1-medium"
+        "resourceClass": "m1-medium",
+        "image": "latest"
       },
       "channel": "development"
     },
     "preview": {
       "distribution": "internal",
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "image": "latest"
       },
       "ios": {
-        "resourceClass": "m1-medium"
+        "resourceClass": "m1-medium",
+        "image": "latest"
       },
       "channel": "preview"
     },
     "production": {
       "ios": {
-        "resourceClass": "m1-medium"
+        "resourceClass": "m1-medium",
+        "image": "latest"
+      },
+      "android": {
+        "image": "latest"
       },
       "channel": "production"
     }
