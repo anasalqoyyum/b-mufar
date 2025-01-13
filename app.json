@@ -11,12 +11,15 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "runtimeVersion": {
         "policy": "sdkVersion"
-      }
+      },
+      "bundleIdentifier": "com.lambdadelta.bmufar"
     },
     "android": {
       "adaptiveIcon": {
